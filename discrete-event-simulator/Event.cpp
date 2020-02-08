@@ -18,31 +18,23 @@ enum{
 };
 
 // The < is the less-relationship on the priority, so by default it would order it in descending order.
+// So it would compare the current referenced Event object < the object in the queue.
+// If it returns true the object will be placed before that object, however the override does the opposite.
 // The override tells it to instead to sort by time in ascending order.
 bool Event::operator < (const Event& e) const{
 	return time > e.time; 
 }
 
-int rand_prob(double prob){
-
-	int range = 100 * prob;
-
-	int result = rand() % 100 + 1;
-
-	if(result > range)
-		return 0;
-	else return 1;
+double rand_prob(){
+	return ((double)rand() / (double)RAND_MAX);
 }
 
 int gen_rand(int max, int min){
-
-	return rand() % (max + 1 - min) + min;
+	return rand() % ((max + 1) - min) + min;
 }
 
 Event create_event(int time, int type, int id){
-
 	Event new_job = {time, type, id};
-
 	return new_job;
 }
 

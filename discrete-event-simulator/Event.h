@@ -10,7 +10,7 @@ struct Event{
 	bool operator < (const Event& e) const;
 };
 
-int rand_prob(double prob);
+double rand_prob();
 
 int gen_rand(int max, int min);
 

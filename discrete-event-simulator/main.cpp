@@ -9,6 +9,8 @@ using namespace std;
 int sys_time;
 // The current number of jobs.
 int job_num = 1;
+// The jobs that exited the system.
+int job_left = 0;
 
 bool CPU_BUSY = false;
 bool DISK1_BUSY = false;
@@ -30,8 +32,8 @@ enum{
 };
 
 queue<Event> CPU;
-queue<Event> Disk1;
-queue<Event> Disk2;
+queue<Event> DISK1;
+queue<Event> DISK2;
 queue<Event> Network;
 
 void job_arrival_handler(FileParam, priority_queue<Event>&, Event);
@@ -68,10 +70,9 @@ int main(){
 	job_num++;
 
 	/*
-
 	int i = 0;
 
-	while(i < 10){
+	while(i < 50){
 		next_arrival_time = gen_rand(sys.ARRIVE_MAX, sys.ARRIVE_MIN);
 		next_event = create_event(next_arrival_time, PROCESS_ARRV, job_num);
 		events.push(next_event);
@@ -85,29 +86,38 @@ int main(){
 		events.pop();
 		cout << next_event.time << "\n";
 	}
-
 	*/
 
 	// While the priority queue is not empty and the system time is not equal to FIN_TIME.
-	while(!events.empty() && sys_time < sys.FIN_TIME){
+	while(!events.empty() && sys_time != sys.FIN_TIME){
 		
 		next_event = events.top();
 		events.pop();
 
 		switch(next_event.type){
-			
 			case PROCESS_ARRV:
 				job_arrival_handler(sys, events, next_event);
 				break;
 			case CPU_FIN:
 				cpu_finish_handler(sys, events, next_event);
 				break;
+			case DISK1_ARRV:
+				break;
+			case DISK1_FIN:
+				break;
+			case DISK2_ARRV:
+				break;
+			case DISK2_FIN:
+				break;
+			case NETWORK_ARRV:
+				break;
+			case NETWORK_FIN:
+				break;
 			case SYS_FIN:
 				system_finish_handler(sys, next_event);
 				break;
 			default:
 				break;
-
 		}		
 	}
 
@@ -117,6 +127,8 @@ int main(){
 		CPU.pop();
 		cout << e.pid << "\n";
 	}
+
+	cout << "\n" << "Total Jobs: " << job_num << " Total Jobs Left: " << job_left << "\n";
 	
 
 	return 0;
@@ -168,8 +180,34 @@ void cpu_finish_handler(FileParam sys, priority_queue<Event>& events, Event next
 	print_log(next_event);
 	CPU_BUSY = false;
 	Event next_cpu_event;
+	
+	double prob = rand_prob();
 
-	job_finish_handler(next_event);
+	if(prob < sys.QUIT_PROB){
+		cout << "Job quit with prob: " << prob << " ";
+		job_left++;
+		job_finish_handler(next_event);
+	}
+	
+	prob = rand_prob();
+
+	if(prob < sys.NETWORK_PROB){
+		cout << "Go NETWORK\n";
+	}	
+	else{
+		if(DISK1.size() < DISK2.size()){
+			cout << "Go DISK1\n";
+		}
+		else if(DISK2.size() < DISK1.size()){
+			cout << "Go DISK2\n";
+		}
+		else{
+			prob = rand_prob();
+			if(prob < 0.5)
+				cout << "Go DISK1\n";
+			else cout << "Go DISK2\n";
+		}
+	}
 
 	if(!CPU.empty()){
 		next_cpu_event = CPU.front();
