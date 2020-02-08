@@ -41,6 +41,7 @@ void job_finish_handler(Event);
 void system_finish_handler(FileParam, Event);
 void cpu_arrival_handler(FileParam, priority_queue<Event>&, Event);
 void cpu_finish_handler(FileParam, priority_queue<Event>&, Event);
+void disk1_arrival_handler(FileParam, priority_queue<Event>&, Event);
 
 int main(){
 
@@ -96,9 +97,23 @@ int main(){
 
 		switch(next_event.type){
 			case PROCESS_ARRV:
+				print_log(next_event);
+				sys_time = next_event.time;
 				job_arrival_handler(sys, events, next_event);
 				break;
+			case PROCESS_EXIT:
+				print_log(next_event);
+				sys_time = next_event.time;
+				job_finish_handler(next_event);
+				break;
+			case CPU_ARRV:
+				print_log(next_event);
+				sys_time = next_event.time;
+				cpu_arrival_handler(sys, events, next_event);
+				break;
 			case CPU_FIN:
+				print_log(next_event);
+				sys_time = next_event.time;
 				cpu_finish_handler(sys, events, next_event);
 				break;
 			case DISK1_ARRV:
@@ -114,6 +129,8 @@ int main(){
 			case NETWORK_FIN:
 				break;
 			case SYS_FIN:
+				print_log(next_event);
+				sys_time = next_event.time;
 				system_finish_handler(sys, next_event);
 				break;
 			default:
@@ -136,87 +153,92 @@ int main(){
 
 void job_arrival_handler(FileParam sys, priority_queue<Event>& events, Event next_event){
 
-	// Print the event when job arrives.
-	print_log(next_event);
-	// Set system time to the event arrival time.
-	sys_time = next_event.time;
+	Event new_event;
+	int next_arrival_time;
 
 	// Determine time for next arrival, push onto queue.
-	int next_arrival_time = gen_rand(sys.ARRIVE_MAX, sys.ARRIVE_MIN) + sys_time;
-	Event new_event = create_event(next_arrival_time, PROCESS_ARRV, job_num);
+	next_arrival_time = gen_rand(sys.ARRIVE_MAX, sys.ARRIVE_MIN) + sys_time;
+	new_event = create_event(next_arrival_time, PROCESS_ARRV, job_num);
 	events.push(new_event);
 	job_num++;
+
+	// Create new event for when the event would arrive in CPU.
+	new_event = create_event(next_event.time, CPU_ARRV, next_event.pid);
 	
-	// Pass the current arrival event onto the cpu arrival handler.
-	cpu_arrival_handler(sys, events, next_event);
+	// If the CPU is not occupied.
+	if(!CPU_BUSY && CPU.empty()){
+		// Push the new event onto the priority queue.
+		events.push(new_event);	
+	}else{
+		// Else push the event onto the CPU queue to wait.
+		CPU.push(new_event);
+	}
 }
 
 void job_finish_handler(Event next_event){
-	
-	cout << "Job " << next_event.pid << " has left the system.\n";
-
+	 cout << "At time " << next_event.time << ": Job " << next_event.pid << " has left the system\n";
+	job_left++;
 }
 
 void cpu_arrival_handler(FileParam sys, priority_queue<Event>& events, Event next_event){
+
+	CPU_BUSY = true;
 	
 	int cpu_time;
 	Event new_event;
 
-	// If the CPU queue is not busy.
-	if(!CPU_BUSY){
-		CPU_BUSY = true;
-		new_event = create_event(next_event.time, CPU_ARRV, next_event.pid);
-		print_log(new_event);
-		cpu_time = gen_rand(sys.CPU_MAX, sys.CPU_MIN) + sys_time;
-		new_event = create_event(cpu_time, CPU_FIN, next_event.pid);
-		events.push(new_event);
-	}
-	else CPU.push(next_event);
-
+	cpu_time = gen_rand(sys.CPU_MAX, sys.CPU_MIN) + sys_time;
+	new_event = create_event(cpu_time, CPU_FIN, next_event.pid);
+	events.push(new_event);
 }
 
 void cpu_finish_handler(FileParam sys, priority_queue<Event>& events, Event next_event){
 
-	print_log(next_event);
 	CPU_BUSY = false;
 	Event next_cpu_event;
-	
+	Event job_finished;
+
 	double prob = rand_prob();
 
 	if(prob < sys.QUIT_PROB){
-		cout << "Job quit with prob: " << prob << " ";
-		job_left++;
-		job_finish_handler(next_event);
+		job_finished = create_event(next_event.time, PROCESS_EXIT, next_event.pid);
+		events.push(job_finished);
 	}
-	
-	prob = rand_prob();
-
-	if(prob < sys.NETWORK_PROB){
-		cout << "Go NETWORK\n";
-	}	
-	else{
-		if(DISK1.size() < DISK2.size()){
-			cout << "Go DISK1\n";
-		}
-		else if(DISK2.size() < DISK1.size()){
-			cout << "Go DISK2\n";
-		}
+	else{	
+		if((prob = rand_prob()) < sys.NETWORK_PROB){
+			cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to NETWORK\n";
+		}	
 		else{
-			prob = rand_prob();
-			if(prob < 0.5)
-				cout << "Go DISK1\n";
-			else cout << "Go DISK2\n";
+			if(DISK1.size() < DISK2.size()){
+				 cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK1\n";
+			}	
+			else if(DISK2.size() < DISK1.size()){
+				 cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK2\n";
+			}
+			else{
+				if((prob = rand_prob()) < 0.5)
+					 cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK1\n";
+				else  cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK2\n";
+			}
 		}
 	}
 
 	if(!CPU.empty()){
 		next_cpu_event = CPU.front();
+		next_cpu_event.time = sys_time;
 		CPU.pop();
-		cpu_arrival_handler(sys, events, next_cpu_event);
+		events.push(next_cpu_event);
 	}
 }
 
+void disk1_arrival_handler(FileParam sys, priority_queue<Event>& events, Event next_event){
+	int disk1_arrival_time = gen_rand(sys.DISK1_MAX, sys.DISK1_MIN) + sys_time;
+
+	Event new_event = create_event(disk1_arrival_time, DISK1_ARRV, next_event.pid);
+	events.push(new_event);
+	
+}
+
 void system_finish_handler(FileParam sys, Event next_event){
-	sys_time = sys.FIN_TIME;
-	print_log(next_event);
+	
 }
