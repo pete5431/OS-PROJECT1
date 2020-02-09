@@ -49,6 +49,24 @@ void print_log(Event e){
 		case CPU_FIN:
 			cout << "At time " << e.time << ": Job " << e.pid << " finished in CPU.\n";
 			break;
+		case DISK1_ARRV:
+			cout << "At time " << e.time << ": Job " << e.pid << " arrives in DISK1.\n";
+			break;
+		case DISK1_FIN:
+			cout << "At time " << e.time << ": Job " << e.pid << " finished in DISK1.\n";
+			break;
+		case DISK2_ARRV:
+			cout << "At time " << e.time << ": Job " << e.pid << " arrived in DISK2.\n";
+			break;
+		case DISK2_FIN:
+			cout << "At time " << e.time << ": Job " << e.pid << " finished in DISK2.\n";
+			break;
+		case NETWORK_ARRV:
+			cout << "At time " << e.time << ": Job " << e.pid << " arrived in NETWORK.\n";
+			break;
+		case NETWORK_FIN:
+			cout << "At time " << e.time << ": Job " << e.pid << " finished in NETWORK.\n";
+			break;
 		case SYS_FIN:
 			cout << "System exit\n";
 			break;
