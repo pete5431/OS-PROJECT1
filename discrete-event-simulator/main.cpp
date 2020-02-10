@@ -44,7 +44,9 @@ void system_finish_handler(FileParam, Event);
 void cpu_arrival_handler(FileParam, priority_queue<Event>&, Event);
 void cpu_finish_handler(FileParam, priority_queue<Event>&, Event);
 void disk1_arrival_handler(FileParam, priority_queue<Event>&, Event);
-
+void disk1_finish_handler(priority_queue<Event>&, Event);
+void disk2_arrival_handler(FileParam, priority_queue<Event>&, Event);
+void disk2_finish_handler(priority_queue<Event>&, Event);
 void network_arrival_handler(FileParam, priority_queue<Event>&, Event);
 void network_finish_handler(priority_queue<Event>&, Event);
 
@@ -122,12 +124,24 @@ int main(){
 				cpu_finish_handler(sys, events, next_event);
 				break;
 			case DISK1_ARRV:
+				print_log(next_event);
+				sys_time = next_event.time;
+				disk1_arrival_handler(sys, events, next_event);
 				break;
 			case DISK1_FIN:
+				print_log(next_event);
+				sys_time = next_event.time;
+				disk1_finish_handler(events, next_event);
 				break;
 			case DISK2_ARRV:
+				print_log(next_event);
+				sys_time = next_event.time;
+				disk2_arrival_handler(sys, events, next_event);
 				break;
 			case DISK2_FIN:
+				print_log(next_event);
+				sys_time = next_event.time;
+				disk2_finish_handler(events, next_event);
 				break;
 			case NETWORK_ARRV:
 				print_log(next_event);
@@ -149,12 +163,17 @@ int main(){
 		}		
 	}
 
-	
 	while(!NETWORK.empty()){
 		Event e = NETWORK.front();
-		DISK1.pop();
+		NETWORK.pop();
 		cout << e.pid << "\n";
 	}
+
+
+	cout << "Network Remaining: " << NETWORK.size() << "\n";
+	cout << "CPU Remaining: " << CPU.size() << "\n";
+	cout << "DISK1 Remaining: " << DISK1.size() << "\n";
+	cout << "DISK2 Remaining: " << DISK2.size() << "\n";
 
 	cout << "\n" << "Total Jobs: " << job_num << " Total Jobs Left: " << job_left << " Total Jobs Enter Network: " << job_enter_network << "\n";
 	
@@ -226,16 +245,36 @@ void cpu_finish_handler(FileParam sys, priority_queue<Event>& events, Event next
 		else{
 			
 			if(DISK1.size() < DISK2.size()){
-				 cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK1\n";
+				next_event.type = DISK1_ARRV;
+				if(!DISK1_BUSY && DISK1.empty()){
+					events.push(next_event);	
+				}else DISK1.push(next_event);
+				 cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK1 because size is " << DISK1.size() << "\n";
 			}	
 			else if(DISK2.size() < DISK1.size()){
-				
-				 cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK2\n";
+				next_event.type = DISK2_ARRV;
+				if(!DISK2_BUSY && DISK2.empty()){
+					events.push(next_event);
+				}else DISK2.push(next_event);
+				 cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK2 because size is " << DISK2.size() << "\n";
 			}
 			else{
-				if((prob = rand_prob()) < 0.5)
-					 cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK1\n";
-				else  cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK2\n";
+				if((prob = rand_prob()) < 0.5){
+					cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK1 because size are equal " << DISK1.size() << " " <<
+                                                DISK2.size() << "\n";
+					next_event.type = DISK1_ARRV;
+					if(!DISK1_BUSY && DISK1.empty()){
+                                        	events.push(next_event);
+                                	}else DISK1.push(next_event);
+				}
+				else{
+					cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK2 because size are equal " << DISK1.size() << " " <<
+                                                DISK2.size() << "\n";
+					next_event.type = DISK2_ARRV;
+                                	if(!DISK2_BUSY && DISK2.empty()){
+                                        	events.push(next_event);
+                                	}else DISK2.push(next_event);
+				}			
 			}
 		}
 	}
@@ -256,6 +295,58 @@ void disk1_arrival_handler(FileParam sys, priority_queue<Event>& events, Event n
 
 	Event new_event = create_event(disk1_finish_time, DISK1_FIN, next_event.pid);
 	events.push(new_event);
+}
+
+void disk1_finish_handler(priority_queue<Event>& events, Event next_event){
+
+	DISK1_BUSY = false;
+
+	Event next_disk1_event;
+
+	next_event.type = CPU_ARRV;
+
+	if(!CPU_BUSY && CPU.empty()){
+		events.push(next_event);
+	}
+	else DISK1.push(next_event);
+
+	if(!DISK1.empty()){
+		next_disk1_event = DISK1.front();
+		next_disk1_event.time = sys_time;
+		DISK1.pop();
+		events.push(next_disk1_event);
+	}
+}
+
+void disk2_arrival_handler(FileParam sys, priority_queue<Event>& events, Event next_event){
+
+	DISK2_BUSY = true;
+
+	int disk2_finish_time = gen_rand(sys.DISK2_MAX, sys.DISK2_MIN) + sys_time;
+
+	Event new_event = create_event(disk2_finish_time, DISK2_FIN, next_event.pid);
+	events.push(new_event);	
+}
+
+void disk2_finish_handler(priority_queue<Event>& events, Event next_event){
+	
+	DISK2_BUSY = false;
+
+	Event next_disk2_event;
+
+	next_event.type = CPU_ARRV;
+
+	if(!CPU_BUSY && CPU.empty()){
+		events.push(next_event);
+	}
+	else DISK2.push(next_event);
+
+	if(!DISK2.empty()){
+		next_disk2_event = DISK2.front();
+		next_disk2_event.time = sys_time;
+		DISK2.pop();
+		events.push(next_disk2_event);
+	}
 }
 
 void network_arrival_handler(FileParam sys, priority_queue<Event>& events, Event next_event){
