@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdio.h>
 #include <cstdlib>
 #include "Event.h"
 using namespace std;
@@ -38,36 +39,51 @@ Event create_event(int time, int type, int id){
 	return new_job;
 }
 
-void print_log(Event e){
+void print_log(FILE* fp, Event e){
+
 	switch(e.type){
 		case PROCESS_ARRV:
+			fprintf(fp, "At time %d, Job %d arrives.\n", e.time, e.pid);
 			cout << "At time " << e.time << ": Job " << e.pid << " arrives.\n";
 			break;
+		case PROCESS_EXIT:
+			fprintf(fp, "At time %d, Job %d has exited the system.\n", e.time, e.pid);
+			cout << "At time " << e.time << ": Job " << e.pid << "has exited the system.\n";
+			break;
 		case CPU_ARRV:
+			fprintf(fp, "At time %d, Job %d entered CPU.\n", e.time, e.pid);
 			cout << "At time " << e.time << ": Job " << e.pid << " arrives in CPU.\n";
 			break;
 		case CPU_FIN:
+			fprintf(fp, "At time %d, Job %d finished in CPU.\n", e.time, e.pid);
 			cout << "At time " << e.time << ": Job " << e.pid << " finished in CPU.\n";
 			break;
 		case DISK1_ARRV:
+			fprintf(fp, "At time %d, Job %d entered DISK1.\n", e.time, e.pid);
 			cout << "At time " << e.time << ": Job " << e.pid << " arrives in DISK1.\n";
 			break;
 		case DISK1_FIN:
+			fprintf(fp, "At time %d, Job %d finished in DISK1.\n", e.time, e.pid);
 			cout << "At time " << e.time << ": Job " << e.pid << " finished in DISK1.\n";
 			break;
 		case DISK2_ARRV:
+			fprintf(fp, "At time %d, Job %d entered DISK2.\n", e.time, e.pid);
 			cout << "At time " << e.time << ": Job " << e.pid << " arrived in DISK2.\n";
 			break;
 		case DISK2_FIN:
+			fprintf(fp, "At time %d, Job %d finished in DISK2.\n", e.time, e.pid);
 			cout << "At time " << e.time << ": Job " << e.pid << " finished in DISK2.\n";
 			break;
 		case NETWORK_ARRV:
+			fprintf(fp, "At time %d, Job %d entered NETWORK.\n", e.time, e.pid);
 			cout << "At time " << e.time << ": Job " << e.pid << " arrived in NETWORK.\n";
 			break;
 		case NETWORK_FIN:
+			fprintf(fp, "At time %d, Job %d finished in NETWORK.\n", e.time, e.pid);
 			cout << "At time " << e.time << ": Job " << e.pid << " finished in NETWORK.\n";
 			break;
 		case SYS_FIN:
+			fprintf(fp, "At time %d, Simulation Finished.\n", e.time);
 			cout << "System exit\n";
 			break;
 		default:

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <queue>
 #include <cstdlib>
+#include <stdio.h>
 #include "FileParam.h"
 #include "Event.h"
 using namespace std;
@@ -62,6 +63,13 @@ int main(){
 
 	priority_queue<Event> events;	
 
+	FILE* fp = fopen("log.txt", "w");
+
+	if(fp == NULL){
+		perror("Error: ");
+		exit(1);
+	}
+
 	// Creates the finish system event and pushes to priority queue. 
 
 	Event finish = create_event(sys.FIN_TIME, SYS_FIN, 0);
@@ -77,25 +85,6 @@ int main(){
 	events.push(next_event);
 	job_num++;
 
-	/*
-	int i = 0;
-
-	while(i < 50){
-		next_arrival_time = gen_rand(sys.ARRIVE_MAX, sys.ARRIVE_MIN);
-		next_event = create_event(next_arrival_time, PROCESS_ARRV, job_num);
-		events.push(next_event);
-		job_num++;
-		print_log(next_event);
-		i++;
-	}
-
-	while(!events.empty()){
-		next_event = events.top();
-		events.pop();
-		cout << next_event.time << "\n";
-	}
-	*/
-
 	// While the priority queue is not empty and the system time is not equal to FIN_TIME.
 	while(!events.empty() && sys_time != sys.FIN_TIME){
 		
@@ -104,57 +93,57 @@ int main(){
 
 		switch(next_event.type){
 			case PROCESS_ARRV:
-				print_log(next_event);
+				print_log(fp, next_event);
 				sys_time = next_event.time;
 				job_arrival_handler(sys, events, next_event);
 				break;
 			case PROCESS_EXIT:
-				print_log(next_event);
+				print_log(fp, next_event);
 				sys_time = next_event.time;
 				job_finish_handler(next_event);
 				break;
 			case CPU_ARRV:
-				print_log(next_event);
+				print_log(fp, next_event);
 				sys_time = next_event.time;
 				cpu_arrival_handler(sys, events, next_event);
 				break;
 			case CPU_FIN:
-				print_log(next_event);
+				print_log(fp, next_event);
 				sys_time = next_event.time;
 				cpu_finish_handler(sys, events, next_event);
 				break;
 			case DISK1_ARRV:
-				print_log(next_event);
+				print_log(fp, next_event);
 				sys_time = next_event.time;
 				disk1_arrival_handler(sys, events, next_event);
 				break;
 			case DISK1_FIN:
-				print_log(next_event);
+				print_log(fp, next_event);
 				sys_time = next_event.time;
 				disk1_finish_handler(events, next_event);
 				break;
 			case DISK2_ARRV:
-				print_log(next_event);
+				print_log(fp, next_event);
 				sys_time = next_event.time;
 				disk2_arrival_handler(sys, events, next_event);
 				break;
 			case DISK2_FIN:
-				print_log(next_event);
+				print_log(fp, next_event);
 				sys_time = next_event.time;
 				disk2_finish_handler(events, next_event);
 				break;
 			case NETWORK_ARRV:
-				print_log(next_event);
+				print_log(fp, next_event);
 				sys_time = next_event.time;
 				network_arrival_handler(sys, events, next_event);
 				break;
 			case NETWORK_FIN:
-				print_log(next_event);
+				print_log(fp, next_event);
 				sys_time = next_event.time;
 				network_finish_handler(events, next_event);
 				break;
 			case SYS_FIN:
-				print_log(next_event);
+				print_log(fp, next_event);
 				sys_time = next_event.time;
 				system_finish_handler(sys, next_event);
 				break;
@@ -163,13 +152,6 @@ int main(){
 		}		
 	}
 
-	while(!NETWORK.empty()){
-		Event e = NETWORK.front();
-		NETWORK.pop();
-		cout << e.pid << "\n";
-	}
-
-
 	cout << "Network Remaining: " << NETWORK.size() << "\n";
 	cout << "CPU Remaining: " << CPU.size() << "\n";
 	cout << "DISK1 Remaining: " << DISK1.size() << "\n";
@@ -177,6 +159,7 @@ int main(){
 
 	cout << "\n" << "Total Jobs: " << job_num << " Total Jobs Left: " << job_left << " Total Jobs Enter Network: " << job_enter_network << "\n";
 	
+	fclose(fp);
 
 	return 0;
 }
@@ -206,7 +189,6 @@ void job_arrival_handler(FileParam sys, priority_queue<Event>& events, Event nex
 }
 
 void job_finish_handler(Event next_event){
-	 cout << "At time " << next_event.time << ": Job " << next_event.pid << " has left the system\n";
 	job_left++;
 }
 
@@ -245,18 +227,18 @@ void cpu_finish_handler(FileParam sys, priority_queue<Event>& events, Event next
 		else{
 			
 			if(DISK1.size() < DISK2.size()){
+				cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK1 because size is " << DISK1.size() << "\n";
 				next_event.type = DISK1_ARRV;
 				if(!DISK1_BUSY && DISK1.empty()){
 					events.push(next_event);	
 				}else DISK1.push(next_event);
-				 cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK1 because size is " << DISK1.size() << "\n";
 			}	
 			else if(DISK2.size() < DISK1.size()){
+				 cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK2 because size is " << DISK2.size() << "\n";
 				next_event.type = DISK2_ARRV;
 				if(!DISK2_BUSY && DISK2.empty()){
 					events.push(next_event);
 				}else DISK2.push(next_event);
-				 cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK2 because size is " << DISK2.size() << "\n";
 			}
 			else{
 				if((prob = rand_prob()) < 0.5){
@@ -308,7 +290,7 @@ void disk1_finish_handler(priority_queue<Event>& events, Event next_event){
 	if(!CPU_BUSY && CPU.empty()){
 		events.push(next_event);
 	}
-	else DISK1.push(next_event);
+	else CPU.push(next_event);
 
 	if(!DISK1.empty()){
 		next_disk1_event = DISK1.front();
@@ -339,7 +321,7 @@ void disk2_finish_handler(priority_queue<Event>& events, Event next_event){
 	if(!CPU_BUSY && CPU.empty()){
 		events.push(next_event);
 	}
-	else DISK2.push(next_event);
+	else CPU.push(next_event);
 
 	if(!DISK2.empty()){
 		next_disk2_event = DISK2.front();

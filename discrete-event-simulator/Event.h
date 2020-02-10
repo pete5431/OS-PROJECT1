@@ -16,6 +16,6 @@ int gen_rand(int max, int min);
 
 Event create_event(int time, int type, int id);
 
-void print_log(Event e);
+void print_log(FILE* fp, Event e);
 
 #endif
