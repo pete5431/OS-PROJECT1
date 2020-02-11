@@ -4,6 +4,29 @@
 #include "FileParam.h"
 using namespace std;
 
+FileParam::FileParam(){
+
+	CPU_AVERAGE_SIZE = 0.0;
+        DISK1_AVERAGE_SIZE = 0.0;
+        DISK2_AVERAGE_SIZE = 0.0;
+        NETWORK_AVERAGE_SIZE = 0.0;
+
+        CPU_MAX_SIZE = 0;
+        DISK1_MAX_SIZE = 0;
+        DISK2_MAX_SIZE = 0;
+        NETWORK_MAX_SIZE = 0;
+
+	CPU_QUEUE_SUM = 0.0;
+	DISK1_QUEUE_SUM = 0.0;
+	DISK2_QUEUE_SUM = 0.0;
+	NETWORK_QUEUE_SUM = 0.0;
+
+	CPU_CHANGED = 0;
+	DISK1_CHANGED = 0;
+	DISK2_CHANGED = 0;
+	NETWORK_CHANGED = 0;
+}
+
 void FileParam::read_file(char* name){
 
 	FILE* fp;
