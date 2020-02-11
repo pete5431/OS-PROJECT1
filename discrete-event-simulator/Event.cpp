@@ -48,7 +48,7 @@ void print_log(FILE* fp, Event e){
 			break;
 		case PROCESS_EXIT:
 			fprintf(fp, "At time %d, Job %d has exited the system.\n", e.time, e.pid);
-			cout << "At time " << e.time << ": Job " << e.pid << "has exited the system.\n";
+			cout << "At time " << e.time << ": Job " << e.pid << " has exited the system.\n";
 			break;
 		case CPU_ARRV:
 			fprintf(fp, "At time %d, Job %d entered CPU.\n", e.time, e.pid);

@@ -13,8 +13,6 @@ int job_num = 1;
 // The jobs that exited the system.
 int job_left = 0;
 
-int job_enter_network = 0;
-
 bool CPU_BUSY = false;
 bool DISK1_BUSY = false;
 bool DISK2_BUSY = false;
@@ -39,17 +37,17 @@ queue<Event> DISK1;
 queue<Event> DISK2;
 queue<Event> NETWORK;
 
-void job_arrival_handler(FileParam, priority_queue<Event>&, Event);
+void job_arrival_handler(FileParam&, priority_queue<Event>&, Event);
 void job_finish_handler(Event);
 void system_finish_handler(FileParam, Event);
 void cpu_arrival_handler(FileParam, priority_queue<Event>&, Event);
-void cpu_finish_handler(FileParam, priority_queue<Event>&, Event);
+void cpu_finish_handler(FileParam&, priority_queue<Event>&, Event);
 void disk1_arrival_handler(FileParam, priority_queue<Event>&, Event);
-void disk1_finish_handler(priority_queue<Event>&, Event);
+void disk1_finish_handler(FileParam&, priority_queue<Event>&, Event);
 void disk2_arrival_handler(FileParam, priority_queue<Event>&, Event);
-void disk2_finish_handler(priority_queue<Event>&, Event);
+void disk2_finish_handler(FileParam&, priority_queue<Event>&, Event);
 void network_arrival_handler(FileParam, priority_queue<Event>&, Event);
-void network_finish_handler(priority_queue<Event>&, Event);
+void network_finish_handler(FileParam&, priority_queue<Event>&, Event);
 
 int main(){
 
@@ -120,7 +118,7 @@ int main(){
 			case DISK1_FIN:
 				print_log(fp, next_event);
 				sys_time = next_event.time;
-				disk1_finish_handler(events, next_event);
+				disk1_finish_handler(sys, events, next_event);
 				break;
 			case DISK2_ARRV:
 				print_log(fp, next_event);
@@ -130,7 +128,7 @@ int main(){
 			case DISK2_FIN:
 				print_log(fp, next_event);
 				sys_time = next_event.time;
-				disk2_finish_handler(events, next_event);
+				disk2_finish_handler(sys, events, next_event);
 				break;
 			case NETWORK_ARRV:
 				print_log(fp, next_event);
@@ -140,7 +138,7 @@ int main(){
 			case NETWORK_FIN:
 				print_log(fp, next_event);
 				sys_time = next_event.time;
-				network_finish_handler(events, next_event);
+				network_finish_handler(sys, events, next_event);
 				break;
 			case SYS_FIN:
 				print_log(fp, next_event);
@@ -157,14 +155,17 @@ int main(){
 	cout << "DISK1 Remaining: " << DISK1.size() << "\n";
 	cout << "DISK2 Remaining: " << DISK2.size() << "\n";
 
-	cout << "\n" << "Total Jobs: " << job_num << " Total Jobs Left: " << job_left << " Total Jobs Enter Network: " << job_enter_network << "\n";
+	cout << "\n" << "Total Jobs: " << job_num << " Total Jobs Left: " << job_left << "\n";
 	
+
+	cout << sys.CPU_MAX_SIZE << " " << (sys.CPU_QUEUE_SUM / sys.CPU_CHANGED) << "\n";
+
 	fclose(fp);
 
 	return 0;
 }
 
-void job_arrival_handler(FileParam sys, priority_queue<Event>& events, Event next_event){
+void job_arrival_handler(FileParam& sys, priority_queue<Event>& events, Event next_event){
 
 	Event new_event;
 	int next_arrival_time;
@@ -185,6 +186,12 @@ void job_arrival_handler(FileParam sys, priority_queue<Event>& events, Event nex
 	}else{
 		// Else push the event onto the CPU queue to wait.
 		CPU.push(next_event);
+		(sys.CPU_CHANGED)++;
+		sys.CPU_QUEUE_SUM += CPU.size();
+		// If CPU queue size is greater than current max, update it.
+		if(sys.CPU_MAX_SIZE < CPU.size()){
+			sys.CPU_MAX_SIZE = CPU.size();
+		}
 	}
 }
 
@@ -205,7 +212,7 @@ void cpu_arrival_handler(FileParam sys, priority_queue<Event>& events, Event nex
 	events.push(new_event);
 }
 
-void cpu_finish_handler(FileParam sys, priority_queue<Event>& events, Event next_event){
+void cpu_finish_handler(FileParam& sys, priority_queue<Event>& events, Event next_event){
 
 	CPU_BUSY = false;
 	Event next_cpu_event;
@@ -224,40 +231,33 @@ void cpu_finish_handler(FileParam sys, priority_queue<Event>& events, Event next
 			}
 			else NETWORK.push(next_event);
 		}	
+		else if(DISK1.size() < DISK2.size()){
+			next_event.type = DISK1_ARRV;
+		}	
+		else if(DISK2.size() < DISK1.size()){
+			next_event.type = DISK2_ARRV;
+		}
 		else{
-			
-			if(DISK1.size() < DISK2.size()){
-				cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK1 because size is " << DISK1.size() << "\n";
+			if((prob = rand_prob()) < 0.5){
 				next_event.type = DISK1_ARRV;
-				if(!DISK1_BUSY && DISK1.empty()){
-					events.push(next_event);	
-				}else DISK1.push(next_event);
-			}	
-			else if(DISK2.size() < DISK1.size()){
-				 cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK2 because size is " << DISK2.size() << "\n";
-				next_event.type = DISK2_ARRV;
-				if(!DISK2_BUSY && DISK2.empty()){
-					events.push(next_event);
-				}else DISK2.push(next_event);
 			}
-			else{
-				if((prob = rand_prob()) < 0.5){
-					cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK1 because size are equal " << DISK1.size() << " " <<
-                                                DISK2.size() << "\n";
-					next_event.type = DISK1_ARRV;
-					if(!DISK1_BUSY && DISK1.empty()){
-                                        	events.push(next_event);
-                                	}else DISK1.push(next_event);
-				}
-				else{
-					cout << "At time " << next_event.time << ": Job " << next_event.pid << " went to DISK2 because size are equal " << DISK1.size() << " " <<
-                                                DISK2.size() << "\n";
-					next_event.type = DISK2_ARRV;
-                                	if(!DISK2_BUSY && DISK2.empty()){
-                                        	events.push(next_event);
-                                	}else DISK2.push(next_event);
-				}			
-			}
+			else next_event.type = DISK2_ARRV;			
+		}
+	}
+
+	// If type was changed to DISK.
+	if(next_event.type == DISK1_ARRV){
+		if(!DISK1_BUSY && DISK1.empty()){
+			events.push(next_event);
+		}else{
+			DISK1.push(next_event);
+		}
+	}
+	else if(next_event.type == DISK2_ARRV){
+		if(!DISK2_BUSY && DISK2.empty()){
+			events.push(next_event);
+		}else{
+			DISK2.push(next_event);
 		}
 	}
 
@@ -265,6 +265,8 @@ void cpu_finish_handler(FileParam sys, priority_queue<Event>& events, Event next
 		next_cpu_event = CPU.front();
 		next_cpu_event.time = sys_time;
 		CPU.pop();
+		(sys.CPU_CHANGED)++;
+		sys.CPU_QUEUE_SUM += CPU.size();
 		events.push(next_cpu_event);
 	}
 }
@@ -279,7 +281,7 @@ void disk1_arrival_handler(FileParam sys, priority_queue<Event>& events, Event n
 	events.push(new_event);
 }
 
-void disk1_finish_handler(priority_queue<Event>& events, Event next_event){
+void disk1_finish_handler(FileParam& sys, priority_queue<Event>& events, Event next_event){
 
 	DISK1_BUSY = false;
 
@@ -290,7 +292,15 @@ void disk1_finish_handler(priority_queue<Event>& events, Event next_event){
 	if(!CPU_BUSY && CPU.empty()){
 		events.push(next_event);
 	}
-	else CPU.push(next_event);
+	else{
+		CPU.push(next_event);
+		(sys.CPU_CHANGED)++;
+                sys.CPU_QUEUE_SUM += CPU.size();
+                // If CPU queue size is greater than current max, update it.
+                if(sys.CPU_MAX_SIZE < CPU.size()){
+                        sys.CPU_MAX_SIZE = CPU.size();
+                }
+	}
 
 	if(!DISK1.empty()){
 		next_disk1_event = DISK1.front();
@@ -310,7 +320,7 @@ void disk2_arrival_handler(FileParam sys, priority_queue<Event>& events, Event n
 	events.push(new_event);	
 }
 
-void disk2_finish_handler(priority_queue<Event>& events, Event next_event){
+void disk2_finish_handler(FileParam& sys, priority_queue<Event>& events, Event next_event){
 	
 	DISK2_BUSY = false;
 
@@ -321,7 +331,15 @@ void disk2_finish_handler(priority_queue<Event>& events, Event next_event){
 	if(!CPU_BUSY && CPU.empty()){
 		events.push(next_event);
 	}
-	else CPU.push(next_event);
+	else{
+		CPU.push(next_event);
+		(sys.CPU_CHANGED)++;
+                sys.CPU_QUEUE_SUM += CPU.size();
+                // If CPU queue size is greater than current max, update it.
+                if(sys.CPU_MAX_SIZE < CPU.size()){
+                        sys.CPU_MAX_SIZE = CPU.size();
+                }
+	}
 
 	if(!DISK2.empty()){
 		next_disk2_event = DISK2.front();
@@ -334,7 +352,6 @@ void disk2_finish_handler(priority_queue<Event>& events, Event next_event){
 void network_arrival_handler(FileParam sys, priority_queue<Event>& events, Event next_event){
 	
 	NETWORK_BUSY = true;
-	job_enter_network++;
 
 	int network_finish_time = gen_rand(sys.NETWORK_MAX, sys.NETWORK_MIN) + sys_time;
 	
@@ -343,7 +360,7 @@ void network_arrival_handler(FileParam sys, priority_queue<Event>& events, Event
 	events.push(new_event);
 }
 
-void network_finish_handler(priority_queue<Event>& events, Event next_event){
+void network_finish_handler(FileParam& sys, priority_queue<Event>& events, Event next_event){
 
 	// When a job finishes, the Network is now free.
 	NETWORK_BUSY = false;
@@ -355,7 +372,16 @@ void network_finish_handler(priority_queue<Event>& events, Event next_event){
 	// Check is CPU is free to enter, otherwise put into CPU queue.
 	if(!CPU_BUSY && CPU.empty()){
 		events.push(next_event);
-	}else CPU.push(next_event);
+	}
+	else{
+		CPU.push(next_event);
+		(sys.CPU_CHANGED)++;
+                sys.CPU_QUEUE_SUM += CPU.size();
+                // If CPU queue size is greater than current max, update it.
+                if(sys.CPU_MAX_SIZE < CPU.size()){
+                        sys.CPU_MAX_SIZE = CPU.size();
+                }
+	}
 
 	// If the NETWORK queue is not empty, pop the next event and add to priority queue.
 	if(!NETWORK.empty()){
