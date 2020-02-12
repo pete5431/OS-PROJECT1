@@ -8,8 +8,6 @@ using namespace std;
 
 // The System time.
 int sys_time;
-// The current number of jobs.
-int job_num = 1;
 
 // The component occupied status.
 bool CPU_BUSY = false;
@@ -39,7 +37,7 @@ queue<Event> DISK2;
 queue<Event> NETWORK;
 
 // All functions behave as their name dictates.
-void job_arrival_handler(FileParam, priority_queue<Event>&, Event);
+void job_arrival_handler(FileParam, priority_queue<Event>&, Event, int job_num);
 void cpu_arrival_handler(FileParam&, priority_queue<Event>&, Event);
 void cpu_finish_handler(FileParam, priority_queue<Event>&, Event);
 void disk1_arrival_handler(FileParam&, priority_queue<Event>&, Event);
@@ -48,7 +46,7 @@ void disk2_arrival_handler(FileParam&, priority_queue<Event>&, Event);
 void disk2_finish_handler(FileParam, priority_queue<Event>&, Event);
 void network_arrival_handler(FileParam&, priority_queue<Event>&, Event);
 void network_finish_handler(FileParam, priority_queue<Event>&, Event);
-void calculate_statistics(FileParam&, int, int);
+void calculate_statistics(FileParam&, int previous_time, int current_time);
 void write_constants(FILE* fp, FileParam);
 
 int main(){
@@ -84,8 +82,9 @@ int main(){
 
 	events.push(finish);
 
+	// The job number.
+	int job_num = 1;
 	// Create first job.
-
 	int next_arrival_time = gen_rand(sys.ARRIVE_MAX, sys.ARRIVE_MIN);
 	Event next_event;
 
@@ -112,7 +111,8 @@ int main(){
 			case PROCESS_ARRV:
 				print_log(fp, next_event);
 				sys_time = next_event.time;
-				job_arrival_handler(sys, events, next_event);
+				job_arrival_handler(sys, events, next_event, job_num);
+				job_num++;
 				break;
 			case PROCESS_EXIT:
 				print_log(fp, next_event);
@@ -180,7 +180,7 @@ int main(){
 	return 0;
 }
 
-void job_arrival_handler(FileParam sys, priority_queue<Event>& events, Event next_event){
+void job_arrival_handler(FileParam sys, priority_queue<Event>& events, Event next_event, int job_num){
 
 	Event new_event;
 	int next_arrival_time;
@@ -189,7 +189,6 @@ void job_arrival_handler(FileParam sys, priority_queue<Event>& events, Event nex
 	next_arrival_time = gen_rand(sys.ARRIVE_MAX, sys.ARRIVE_MIN) + sys_time;
 	new_event = create_event(next_arrival_time, PROCESS_ARRV, job_num);
 	events.push(new_event);
-	job_num++;
 
 	// Set the event type to CPU_ARRV.
 	next_event.type = CPU_ARRV;
@@ -446,6 +445,7 @@ void calculate_statistics(FileParam& sys, int previous_time, int current_time){
 	}
 
 	// Calculate the sum of queue sizes at each unit of time.
+	// Will be used to calculate average.
 	sys.CPU_QUEUE_SUM += (CPU.size() * time_passed);
         sys.DISK1_QUEUE_SUM += (DISK1.size() * time_passed);
         sys.DISK2_QUEUE_SUM += (DISK2.size() * time_passed);
