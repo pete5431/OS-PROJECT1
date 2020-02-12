@@ -175,6 +175,8 @@ int main(){
 	// Write all finalized statistics to "statistics.txt".
 	write_statistic_file(sys);
 
+	cout << "Job_num: " << job_num << "\n";
+
 	fclose(fp);
 
 	return 0;
@@ -475,6 +477,8 @@ void write_constants(FILE* fp, FileParam sys){
 	fprintf(fp, "ARRIVE_MAX %d\n", sys.ARRIVE_MAX);
 	fprintf(fp, "QUIT_PROB %f\n", sys.QUIT_PROB);
 	fprintf(fp, "NETWORK_PROB %f\n", sys.NETWORK_PROB);
+	fprintf(fp, "CPU_MIN %d\n", sys.CPU_MIN);
+	fprintf(fp, "CPU_MAX %d\n", sys.CPU_MAX);
 	fprintf(fp, "DISK1_MIN %d\n", sys.DISK1_MIN);
 	fprintf(fp, "DISK1_MAX %d\n", sys.DISK1_MAX);
 	fprintf(fp, "DISK2_MIN %d\n", sys.DISK2_MIN);
