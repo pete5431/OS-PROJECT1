@@ -1,28 +1,28 @@
-CPU busy time: 9787.000000 / CPU Utilization Percentage: 0.978700
-Max CPU Queue Size: 35
-Average CPU Queue Size: 17.598500
-Max CPU Response time: 50
-Average CPU Response time: 29.208333
-Number of jobs CPU completed: 406 / Throughput(Per one unit of time): 0.040600
+CPU busy time: 29950.000000 / CPU Utilization Percentage: 0.998333
+Max CPU Queue Size: 598
+Average CPU Queue Size: 297.614333
+Max CPU Response time: 40
+Average CPU Response time: 24.816225
+Number of jobs CPU completed: 1447 / Throughput(Per one unit of time): 0.048233
 
-DISK1 busy time: 9823.000000 / DISK1 Utilization Percentage: 0.982300
-Max DISK1 Queue Size: 20
-Average DISK1 Queue Size: 6.636100
-Max DISK1 Response time: 198
-Average DISK1 Response time: 133.040000
-Number of jobs DISK1 completed: 74 / Throughput(Per one unit of time): 0.007400
+DISK1 busy time: 29864.000000 / DISK1 Utilization Percentage: 0.995467
+Max DISK1 Queue Size: 114
+Average DISK1 Queue Size: 55.517067
+Max DISK1 Response time: 200
+Average DISK1 Response time: 132.730088
+Number of jobs DISK1 completed: 225 / Throughput(Per one unit of time): 0.007500
 
-DISK2 busy time: 9707.000000 / DISK2 Utilization Percentage: 0.970700
-Max DISK2 Queue Size: 19
-Average DISK2 Queue Size: 6.558400
+DISK2 busy time: 29961.000000 / DISK2 Utilization Percentage: 0.998700
+Max DISK2 Queue Size: 114
+Average DISK2 Queue Size: 55.476767
 Max DISK2 Response time: 200
-Average DISK2 Response time: 120.158537
-Number of jobs DISK2 completed: 81 / Throughput(Per one unit of time): 0.008100
+Average DISK2 Response time: 129.922414
+Number of jobs DISK2 completed: 231 / Throughput(Per one unit of time): 0.007700
 
-NETWORK busy time: 9684.000000 / NETWORK Utilization Percentage: 0.968400
-Max NETWORK Queue Size: 53
-Average NETWORK Queue Size: 27.525600
-Max NETWORK Response time: 695
-Average NETWORK Response time: 619.000000
-Number of jobs NETWORK completed: 15 / Throughput(Per one unit of time): 0.001500
+NETWORK busy time: 29795.000000 / NETWORK Utilization Percentage: 0.993167
+Max NETWORK Queue Size: 135
+Average NETWORK Queue Size: 65.821200
+Max NETWORK Response time: 299
+Average NETWORK Response time: 199.213333
+Number of jobs NETWORK completed: 149 / Throughput(Per one unit of time): 0.004967
 

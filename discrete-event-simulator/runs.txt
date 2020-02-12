@@ -1,0 +1,163 @@
+RUN SAMPLE 1:
+
+Constants used.
+
+SEED 1122
+INIT_TIME 0
+FIN_TIME 10000
+ARRIVE_MIN 20
+ARRIVE_MAX 80
+QUIT_PROB 0.200000
+NETWORK_PROB 0.300000
+CPU_MIN 5
+CPU_MAX 50
+DISK1_MIN 50
+DISK1_MAX 200
+DISK2_MIN 50
+DISK2_MAX 200
+NETWORK_MIN 500
+NETWORK_MAX 700
+
+Statistics:
+
+CPU busy time: 9787.000000 / CPU Utilization Percentage: 0.978700
+Max CPU Queue Size: 35
+Average CPU Queue Size: 17.598500
+Max CPU Response time: 50
+Average CPU Response time: 29.208333
+Number of jobs CPU completed: 406 / Throughput(Per one unit of time): 0.040600
+
+DISK1 busy time: 9823.000000 / DISK1 Utilization Percentage: 0.982300
+Max DISK1 Queue Size: 20
+Average DISK1 Queue Size: 6.636100
+Max DISK1 Response time: 198
+Average DISK1 Response time: 133.040000
+Number of jobs DISK1 completed: 74 / Throughput(Per one unit of time): 0.007400
+
+DISK2 busy time: 9707.000000 / DISK2 Utilization Percentage: 0.970700
+Max DISK2 Queue Size: 19
+Average DISK2 Queue Size: 6.558400
+Max DISK2 Response time: 200
+Average DISK2 Response time: 120.158537
+Number of jobs DISK2 completed: 81 / Throughput(Per one unit of time): 0.008100
+
+NETWORK busy time: 9684.000000 / NETWORK Utilization Percentage: 0.968400
+Max NETWORK Queue Size: 53
+Average NETWORK Queue Size: 27.525600
+Max NETWORK Response time: 695
+Average NETWORK Response time: 619.000000
+Number of jobs NETWORK completed: 15 / Throughput(Per one unit of time): 0.001500
+
+RUN 1 DISCUSSION:
+
+For this first run, I decided for system time to go from 0 to 10000. The total number jobs equals 203, which didnt reach the requirement of at least 1000 jobs.
+However this was expected because on average the arrival time would be around 50, and 10000 / 50 is 200, so it is expected to have that many jobs created.
+Overall the utilization of each component seems really similar. Even though NETWORK processed the least amount of jobs, its utilization was still similar
+to the other components because its reponse time was so high. Also noticed that the queue size of NETWORK was the largest because of the long response time.
+Also I thought it was a good idea to make cpu max and min smaller than the rest otherwise there would be a huge bottleneck on the rest of the components because
+everything goes through the cpu.
+
+RUN SAMPLE 2:
+
+SEED 1122
+INIT_TIME 0
+FIN_TIME 10000
+ARRIVE_MIN 20
+ARRIVE_MAX 50
+QUIT_PROB 0.200000
+NETWORK_PROB 0.300000
+CPU_MIN 20
+CPU_MAX 50
+DISK1_MIN 50
+DISK1_MAX 200
+DISK2_MIN 50
+DISK2_MAX 200
+NETWORK_MIN 100
+NETWORK_MAX 300
+
+CPU busy time: 9955.000000 / CPU Utilization Percentage: 0.995500
+Max CPU Queue Size: 208
+Average CPU Queue Size: 101.015200
+Max CPU Response time: 50
+Average CPU Response time: 35.731183
+Number of jobs CPU completed: 334 / Throughput(Per one unit of time): 0.033400
+
+DISK1 busy time: 9111.000000 / DISK1 Utilization Percentage: 0.911100
+Max DISK1 Queue Size: 12
+Average DISK1 Queue Size: 3.426600
+Max DISK1 Response time: 197
+Average DISK1 Response time: 126.767123
+Number of jobs DISK1 completed: 72 / Throughput(Per one unit of time): 0.007200
+
+DISK2 busy time: 9515.000000 / DISK2 Utilization Percentage: 0.951500
+Max DISK2 Queue Size: 12
+Average DISK2 Queue Size: 3.371700
+Max DISK2 Response time: 197
+Average DISK2 Response time: 124.493506
+Number of jobs DISK2 completed: 76 / Throughput(Per one unit of time): 0.007600
+
+NETWORK busy time: 9734.000000 / NETWORK Utilization Percentage: 0.973400
+Max NETWORK Queue Size: 11
+Average NETWORK Queue Size: 4.937500
+Max NETWORK Response time: 300
+Average NETWORK Response time: 203.083333
+Number of jobs NETWORK completed: 47 / Throughput(Per one unit of time): 0.004700
+
+RUN 2 DISCUSSION:
+
+For this run I decreased the interarrival time of jobs, and increased the cpu processing time. Also the network min and max were toned down a lot.
+Right away this run produced more jobs, 294 instead of the last 203. I think this was largely due to the decreased interarrival time of jobs.
+Increasing the cpu processing time just made it more of a bottleneck, as seen in the significantly decreased queue sizes for the other components.
+The decreasing of network min and max just made it on par with the disks in terms of queue size even though its response time was still higher.
+
+RUN SAMPLE 3:
+
+SEED 1122
+INIT_TIME 0
+FIN_TIME 30000
+ARRIVE_MIN 20
+ARRIVE_MAX 30
+QUIT_PROB 0.200000
+NETWORK_PROB 0.300000
+CPU_MIN 10
+CPU_MAX 40
+DISK1_MIN 50
+DISK1_MAX 200
+DISK2_MIN 50
+DISK2_MAX 200
+NETWORK_MIN 100
+NETWORK_MAX 300
+
+CPU busy time: 29950.000000 / CPU Utilization Percentage: 0.998333
+Max CPU Queue Size: 598
+Average CPU Queue Size: 297.614333
+Max CPU Response time: 40
+Average CPU Response time: 24.816225
+Number of jobs CPU completed: 1447 / Throughput(Per one unit of time): 0.048233
+
+DISK1 busy time: 29864.000000 / DISK1 Utilization Percentage: 0.995467
+Max DISK1 Queue Size: 114
+Average DISK1 Queue Size: 55.517067
+Max DISK1 Response time: 200
+Average DISK1 Response time: 132.730088
+Number of jobs DISK1 completed: 225 / Throughput(Per one unit of time): 0.007500
+
+DISK2 busy time: 29961.000000 / DISK2 Utilization Percentage: 0.998700
+Max DISK2 Queue Size: 114
+Average DISK2 Queue Size: 55.476767
+Max DISK2 Response time: 200
+Average DISK2 Response time: 129.922414
+Number of jobs DISK2 completed: 231 / Throughput(Per one unit of time): 0.007700
+
+NETWORK busy time: 29795.000000 / NETWORK Utilization Percentage: 0.993167
+Max NETWORK Queue Size: 135
+Average NETWORK Queue Size: 65.821200
+Max NETWORK Response time: 299
+Average NETWORK Response time: 199.213333
+Number of jobs NETWORK completed: 149 / Throughput(Per one unit of time): 0.004967
+
+RUN 3 DISCUSSION:
+
+For this run I increased the time to 30000, and the end result was 1202 jobs generated. I decreased the arrival time slightly but it didn't have much
+of an impact as the finish time. I also decreased cpu min and max again to see if I can lessen the bottleneck, but the CPU queue was still the busiest
+throughout the run. 
