@@ -6,25 +6,42 @@ using namespace std;
 
 FileParam::FileParam(){
 
-	CPU_AVERAGE_SIZE = 0.0;
-        DISK1_AVERAGE_SIZE = 0.0;
-        DISK2_AVERAGE_SIZE = 0.0;
-        NETWORK_AVERAGE_SIZE = 0.0;
+	CPU_QUEUE_SUM = 0.0;
+        DISK1_QUEUE_SUM = 0.0;
+        DISK2_QUEUE_SUM = 0.0;
+        NETWORK_QUEUE_SUM = 0.0;
 
         CPU_MAX_SIZE = 0;
         DISK1_MAX_SIZE = 0;
         DISK2_MAX_SIZE = 0;
         NETWORK_MAX_SIZE = 0;
 
-	CPU_QUEUE_SUM = 0.0;
-	DISK1_QUEUE_SUM = 0.0;
-	DISK2_QUEUE_SUM = 0.0;
-	NETWORK_QUEUE_SUM = 0.0;
+        CPU_MAX_RESPONSE = 0;
+        DISK1_MAX_RESPONSE = 0;
+        DISK2_MAX_RESPONSE = 0;
+        NETWORK_MAX_RESPONSE = 0;
 
-	CPU_CHANGED = 0;
-	DISK1_CHANGED = 0;
-	DISK2_CHANGED = 0;
-	NETWORK_CHANGED = 0;
+        CPU_RESPONSE_SUM = 0.0;
+        DISK1_RESPONSE_SUM = 0.0;
+        DISK2_RESPONSE_SUM = 0.0;
+        NETWORK_RESPONSE_SUM = 0.0;
+
+	CPU_ARRV_COUNT = 0;
+	DISK1_ARRV_COUNT = 0;
+	DISK2_ARRV_COUNT = 0;
+	NETWORK_ARRV_COUNT = 0;
+
+        CPU_BUSY_TOTAL = 0;
+        DISK1_BUSY_TOTAL = 0;
+        DISK2_BUSY_TOTAL = 0;
+        NETWORK_BUSY_TOTAL = 0;
+
+        CPU_JOBS_COMPLETE = 0;
+        DISK1_JOBS_COMPLETE = 0;
+        DISK2_JOBS_COMPLETE = 0;
+        NETWORK_JOBS_COMPLETE = 0;
+
+	TOTAL = 0;
 }
 
 void FileParam::read_file(char* name){
@@ -91,6 +108,24 @@ void FileParam::read_file(char* name){
 
 	this->NETWORK_MAX = read_int;	
 
+	fclose(fp);
+}
+
+void write_statistic_file(FileParam sys){
+	
+	FILE* fp = fopen("statistics.txt", "w");
+
+	if(fp == NULL){
+		perror("Error: ");
+		exit(1);
+	} 
+
+	fprintf(fp, "CPU busy time: %f\n", sys.CPU_BUSY_TOTAL);
+	fprintf(fp, "Max CPU Queue Size: %d\n", sys.CPU_MAX_SIZE);
+	fprintf(fp, "Average CPU Queue Size: %f\n", (sys.CPU_QUEUE_SUM / sys.FIN_TIME));	
+	fprintf(fp, "Max CPU Response time: %d\n", sys.CPU_MAX_RESPONSE);
+	fprintf(fp, "Average CPU Response time: %f\n", (sys.CPU_RESPONSE_SUM / sys.CPU_ARRV_COUNT));
+	fprintf(fp, "Number of jobs CPU completed: %d\n", sys.CPU_JOBS_COMPLETE);
 	fclose(fp);
 }	
 
