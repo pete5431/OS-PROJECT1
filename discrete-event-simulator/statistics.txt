@@ -1,0 +1,28 @@
+CPU busy time: 9787.000000 / CPU Utilization Percentage: 0.978700
+Max CPU Queue Size: 35
+Average CPU Queue Size: 17.598500
+Max CPU Response time: 50
+Average CPU Response time: 29.208333
+Number of jobs CPU completed: 406 / Throughput(Per one unit of time): 0.040600
+
+DISK1 busy time: 9823.000000 / DISK1 Utilization Percentage: 0.982300
+Max DISK1 Queue Size: 20
+Average DISK1 Queue Size: 6.636100
+Max DISK1 Response time: 198
+Average DISK1 Response time: 133.040000
+Number of jobs DISK1 completed: 74 / Throughput(Per one unit of time): 0.007400
+
+DISK2 busy time: 9707.000000 / DISK2 Utilization Percentage: 0.970700
+Max DISK2 Queue Size: 19
+Average DISK2 Queue Size: 6.558400
+Max DISK2 Response time: 200
+Average DISK2 Response time: 120.158537
+Number of jobs DISK2 completed: 81 / Throughput(Per one unit of time): 0.008100
+
+NETWORK busy time: 9684.000000 / NETWORK Utilization Percentage: 0.968400
+Max NETWORK Queue Size: 53
+Average NETWORK Queue Size: 27.525600
+Max NETWORK Response time: 695
+Average NETWORK Response time: 619.000000
+Number of jobs NETWORK completed: 15 / Throughput(Per one unit of time): 0.001500
+

@@ -1,0 +1,1300 @@
+SEED 1122
+INIT_TIME 0
+FIN_TIME 10000
+ARRIVE_MIN 20
+ARRIVE_MAX 80
+QUIT_PROB 0.200000
+NETWORK_PROB 0.300000
+DISK1_MIN 50
+DISK1_MAX 200
+DISK2_MIN 50
+DISK2_MAX 200
+NETWORK_MIN 500
+NETWORK_MAX 700
+At time 74, Job 1 arrives.
+At time 74, Job 1 entered CPU.
+At time 93, Job 1 finished in CPU.
+At time 93, Job 1 entered DISK2.
+At time 138, Job 2 arrives.
+At time 138, Job 2 entered CPU.
+At time 166, Job 3 arrives.
+At time 177, Job 2 finished in CPU.
+At time 177, Job 2 entered DISK1.
+At time 177, Job 3 entered CPU.
+At time 184, Job 3 finished in CPU.
+At time 184, Job 3 has exited the system.
+At time 212, Job 4 arrives.
+At time 212, Job 4 entered CPU.
+At time 232, Job 1 finished in DISK2.
+At time 251, Job 4 finished in CPU.
+At time 251, Job 1 entered CPU.
+At time 266, Job 5 arrives.
+At time 293, Job 1 finished in CPU.
+At time 293, Job 1 entered DISK2.
+At time 293, Job 5 entered CPU.
+At time 307, Job 6 arrives.
+At time 316, Job 5 finished in CPU.
+At time 316, Job 5 entered NETWORK.
+At time 316, Job 6 entered CPU.
+At time 330, Job 6 finished in CPU.
+At time 330, Job 6 has exited the system.
+At time 340, Job 2 finished in DISK1.
+At time 340, Job 2 entered CPU.
+At time 340, Job 4 entered DISK1.
+At time 345, Job 2 finished in CPU.
+At time 359, Job 7 arrives.
+At time 359, Job 7 entered CPU.
+At time 366, Job 7 finished in CPU.
+At time 396, Job 1 finished in DISK2.
+At time 396, Job 1 entered CPU.
+At time 409, Job 8 arrives.
+At time 434, Job 1 finished in CPU.
+At time 434, Job 1 entered DISK2.
+At time 434, Job 8 entered CPU.
+At time 449, Job 4 finished in DISK1.
+At time 449, Job 9 arrives.
+At time 449, Job 7 entered DISK1.
+At time 463, Job 8 finished in CPU.
+At time 463, Job 4 entered CPU.
+At time 477, Job 10 arrives.
+At time 492, Job 4 finished in CPU.
+At time 492, Job 9 entered CPU.
+At time 513, Job 9 finished in CPU.
+At time 513, Job 10 entered CPU.
+At time 525, Job 11 arrives.
+At time 533, Job 10 finished in CPU.
+At time 533, Job 11 entered CPU.
+At time 541, Job 1 finished in DISK2.
+At time 541, Job 8 entered DISK2.
+At time 574, Job 7 finished in DISK1.
+At time 574, Job 9 entered DISK1.
+At time 582, Job 11 finished in CPU.
+At time 582, Job 11 has exited the system.
+At time 582, Job 1 entered CPU.
+At time 603, Job 12 arrives.
+At time 621, Job 1 finished in CPU.
+At time 621, Job 7 entered CPU.
+At time 626, Job 13 arrives.
+At time 671, Job 7 finished in CPU.
+At time 671, Job 14 arrives.
+At time 671, Job 12 entered CPU.
+At time 693, Job 12 finished in CPU.
+At time 693, Job 13 entered CPU.
+At time 694, Job 8 finished in DISK2.
+At time 694, Job 10 entered DISK2.
+At time 735, Job 15 arrives.
+At time 742, Job 13 finished in CPU.
+At time 742, Job 14 entered CPU.
+At time 756, Job 16 arrives.
+At time 758, Job 9 finished in DISK1.
+At time 758, Job 12 entered DISK1.
+At time 775, Job 14 finished in CPU.
+At time 775, Job 8 entered CPU.
+At time 790, Job 17 arrives.
+At time 813, Job 10 finished in DISK2.
+At time 822, Job 8 finished in CPU.
+At time 822, Job 8 has exited the system.
+At time 822, Job 15 entered CPU.
+At time 830, Job 15 finished in CPU.
+At time 830, Job 16 entered CPU.
+At time 852, Job 18 arrives.
+At time 870, Job 16 finished in CPU.
+At time 870, Job 16 has exited the system.
+At time 870, Job 9 entered CPU.
+At time 888, Job 19 arrives.
+At time 898, Job 9 finished in CPU.
+At time 898, Job 17 entered CPU.
+At time 906, Job 17 finished in CPU.
+At time 906, Job 10 entered CPU.
+At time 914, Job 10 finished in CPU.
+At time 914, Job 10 entered DISK2.
+At time 914, Job 18 entered CPU.
+At time 928, Job 20 arrives.
+At time 948, Job 18 finished in CPU.
+At time 948, Job 12 finished in DISK1.
+At time 948, Job 19 entered CPU.
+At time 948, Job 9 entered DISK1.
+At time 971, Job 21 arrives.
+At time 978, Job 19 finished in CPU.
+At time 978, Job 20 entered CPU.
+At time 979, Job 10 finished in DISK2.
+At time 979, Job 18 entered DISK2.
+At time 982, Job 5 finished in NETWORK.
+At time 982, Job 2 entered NETWORK.
+At time 1005, Job 22 arrives.
+At time 1007, Job 20 finished in CPU.
+At time 1007, Job 12 entered CPU.
+At time 1042, Job 23 arrives.
+At time 1053, Job 12 finished in CPU.
+At time 1053, Job 21 entered CPU.
+At time 1079, Job 21 finished in CPU.
+At time 1079, Job 10 entered CPU.
+At time 1100, Job 24 arrives.
+At time 1117, Job 10 finished in CPU.
+At time 1117, Job 5 entered CPU.
+At time 1146, Job 9 finished in DISK1.
+At time 1146, Job 19 entered DISK1.
+At time 1154, Job 18 finished in DISK2.
+At time 1154, Job 20 entered DISK2.
+At time 1159, Job 5 finished in CPU.
+At time 1159, Job 22 entered CPU.
+At time 1166, Job 25 arrives.
+At time 1188, Job 22 finished in CPU.
+At time 1188, Job 23 entered CPU.
+At time 1193, Job 23 finished in CPU.
+At time 1193, Job 24 entered CPU.
+At time 1211, Job 26 arrives.
+At time 1216, Job 24 finished in CPU.
+At time 1216, Job 9 entered CPU.
+At time 1217, Job 20 finished in DISK2.
+At time 1217, Job 5 entered DISK2.
+At time 1232, Job 9 finished in CPU.
+At time 1232, Job 9 has exited the system.
+At time 1232, Job 18 entered CPU.
+At time 1251, Job 18 finished in CPU.
+At time 1251, Job 25 entered CPU.
+At time 1264, Job 27 arrives.
+At time 1282, Job 19 finished in DISK1.
+At time 1282, Job 12 entered DISK1.
+At time 1285, Job 25 finished in CPU.
+At time 1285, Job 26 entered CPU.
+At time 1322, Job 28 arrives.
+At time 1329, Job 26 finished in CPU.
+At time 1329, Job 20 entered CPU.
+At time 1348, Job 5 finished in DISK2.
+At time 1348, Job 22 entered DISK2.
+At time 1354, Job 29 arrives.
+At time 1359, Job 20 finished in CPU.
+At time 1359, Job 27 entered CPU.
+At time 1383, Job 27 finished in CPU.
+At time 1383, Job 27 has exited the system.
+At time 1383, Job 19 entered CPU.
+At time 1392, Job 30 arrives.
+At time 1411, Job 19 finished in CPU.
+At time 1411, Job 28 entered CPU.
+At time 1425, Job 31 arrives.
+At time 1426, Job 28 finished in CPU.
+At time 1426, Job 28 has exited the system.
+At time 1426, Job 5 entered CPU.
+At time 1443, Job 12 finished in DISK1.
+At time 1443, Job 23 entered DISK1.
+At time 1447, Job 5 finished in CPU.
+At time 1447, Job 29 entered CPU.
+At time 1454, Job 22 finished in DISK2.
+At time 1454, Job 18 entered DISK2.
+At time 1456, Job 29 finished in CPU.
+At time 1456, Job 30 entered CPU.
+At time 1483, Job 30 finished in CPU.
+At time 1483, Job 31 entered CPU.
+At time 1484, Job 32 arrives.
+At time 1505, Job 33 arrives.
+At time 1507, Job 31 finished in CPU.
+At time 1507, Job 12 entered CPU.
+At time 1532, Job 12 finished in CPU.
+At time 1532, Job 22 entered CPU.
+At time 1544, Job 23 finished in DISK1.
+At time 1544, Job 24 entered DISK1.
+At time 1548, Job 34 arrives.
+At time 1565, Job 18 finished in DISK2.
+At time 1565, Job 26 entered DISK2.
+At time 1569, Job 35 arrives.
+At time 1580, Job 22 finished in CPU.
+At time 1580, Job 32 entered CPU.
+At time 1595, Job 32 finished in CPU.
+At time 1595, Job 33 entered CPU.
+At time 1602, Job 33 finished in CPU.
+At time 1602, Job 23 entered CPU.
+At time 1624, Job 24 finished in DISK1.
+At time 1624, Job 25 entered DISK1.
+At time 1633, Job 23 finished in CPU.
+At time 1633, Job 23 has exited the system.
+At time 1633, Job 34 entered CPU.
+At time 1638, Job 36 arrives.
+At time 1638, Job 2 finished in NETWORK.
+At time 1638, Job 4 entered NETWORK.
+At time 1672, Job 34 finished in CPU.
+At time 1672, Job 18 entered CPU.
+At time 1686, Job 26 finished in DISK2.
+At time 1686, Job 20 entered DISK2.
+At time 1689, Job 18 finished in CPU.
+At time 1689, Job 35 entered CPU.
+At time 1692, Job 37 arrives.
+At time 1713, Job 35 finished in CPU.
+At time 1713, Job 24 entered CPU.
+At time 1726, Job 38 arrives.
+At time 1762, Job 24 finished in CPU.
+At time 1762, Job 36 entered CPU.
+At time 1768, Job 36 finished in CPU.
+At time 1768, Job 2 entered CPU.
+At time 1771, Job 25 finished in DISK1.
+At time 1771, Job 19 entered DISK1.
+At time 1790, Job 39 arrives.
+At time 1810, Job 20 finished in DISK2.
+At time 1810, Job 30 entered DISK2.
+At time 1813, Job 2 finished in CPU.
+At time 1813, Job 26 entered CPU.
+At time 1830, Job 26 finished in CPU.
+At time 1830, Job 37 entered CPU.
+At time 1833, Job 40 arrives.
+At time 1854, Job 37 finished in CPU.
+At time 1854, Job 37 has exited the system.
+At time 1854, Job 38 entered CPU.
+At time 1876, Job 38 finished in CPU.
+At time 1876, Job 38 has exited the system.
+At time 1876, Job 25 entered CPU.
+At time 1884, Job 41 arrives.
+At time 1892, Job 25 finished in CPU.
+At time 1892, Job 39 entered CPU.
+At time 1907, Job 39 finished in CPU.
+At time 1907, Job 39 has exited the system.
+At time 1907, Job 20 entered CPU.
+At time 1934, Job 19 finished in DISK1.
+At time 1934, Job 22 entered DISK1.
+At time 1940, Job 42 arrives.
+At time 1944, Job 20 finished in CPU.
+At time 1944, Job 40 entered CPU.
+At time 1950, Job 40 finished in CPU.
+At time 1950, Job 40 has exited the system.
+At time 1950, Job 41 entered CPU.
+At time 1966, Job 41 finished in CPU.
+At time 1966, Job 19 entered CPU.
+At time 1997, Job 19 finished in CPU.
+At time 1997, Job 42 entered CPU.
+At time 2002, Job 30 finished in DISK2.
+At time 2002, Job 31 entered DISK2.
+At time 2017, Job 43 arrives.
+At time 2017, Job 42 finished in CPU.
+At time 2017, Job 30 entered CPU.
+At time 2057, Job 30 finished in CPU.
+At time 2057, Job 43 entered CPU.
+At time 2065, Job 43 finished in CPU.
+At time 2065, Job 43 has exited the system.
+At time 2077, Job 44 arrives.
+At time 2077, Job 44 entered CPU.
+At time 2097, Job 22 finished in DISK1.
+At time 2097, Job 32 entered DISK1.
+At time 2121, Job 44 finished in CPU.
+At time 2121, Job 22 entered CPU.
+At time 2127, Job 45 arrives.
+At time 2155, Job 46 arrives.
+At time 2168, Job 22 finished in CPU.
+At time 2168, Job 22 has exited the system.
+At time 2168, Job 45 entered CPU.
+At time 2180, Job 45 finished in CPU.
+At time 2180, Job 46 entered CPU.
+At time 2199, Job 47 arrives.
+At time 2202, Job 31 finished in DISK2.
+At time 2202, Job 34 entered DISK2.
+At time 2206, Job 46 finished in CPU.
+At time 2206, Job 46 has exited the system.
+At time 2206, Job 47 entered CPU.
+At time 2209, Job 32 finished in DISK1.
+At time 2209, Job 18 entered DISK1.
+At time 2241, Job 48 arrives.
+At time 2244, Job 47 finished in CPU.
+At time 2244, Job 4 finished in NETWORK.
+At time 2244, Job 31 entered CPU.
+At time 2244, Job 1 entered NETWORK.
+At time 2257, Job 34 finished in DISK2.
+At time 2257, Job 24 entered DISK2.
+At time 2281, Job 49 arrives.
+At time 2282, Job 31 finished in CPU.
+At time 2282, Job 32 entered CPU.
+At time 2285, Job 18 finished in DISK1.
+At time 2285, Job 26 entered DISK1.
+At time 2304, Job 32 finished in CPU.
+At time 2304, Job 32 has exited the system.
+At time 2304, Job 48 entered CPU.
+At time 2312, Job 48 finished in CPU.
+At time 2312, Job 48 has exited the system.
+At time 2312, Job 4 entered CPU.
+At time 2325, Job 50 arrives.
+At time 2356, Job 4 finished in CPU.
+At time 2356, Job 34 entered CPU.
+At time 2362, Job 51 arrives.
+At time 2388, Job 24 finished in DISK2.
+At time 2388, Job 2 entered DISK2.
+At time 2391, Job 52 arrives.
+At time 2398, Job 34 finished in CPU.
+At time 2398, Job 49 entered CPU.
+At time 2411, Job 53 arrives.
+At time 2412, Job 26 finished in DISK1.
+At time 2412, Job 25 entered DISK1.
+At time 2445, Job 49 finished in CPU.
+At time 2445, Job 18 entered CPU.
+At time 2473, Job 2 finished in DISK2.
+At time 2473, Job 20 entered DISK2.
+At time 2475, Job 54 arrives.
+At time 2479, Job 18 finished in CPU.
+At time 2479, Job 18 has exited the system.
+At time 2479, Job 50 entered CPU.
+At time 2528, Job 50 finished in CPU.
+At time 2528, Job 50 has exited the system.
+At time 2528, Job 51 entered CPU.
+At time 2534, Job 25 finished in DISK1.
+At time 2534, Job 41 entered DISK1.
+At time 2545, Job 20 finished in DISK2.
+At time 2545, Job 42 entered DISK2.
+At time 2546, Job 55 arrives.
+At time 2547, Job 51 finished in CPU.
+At time 2547, Job 24 entered CPU.
+At time 2575, Job 56 arrives.
+At time 2579, Job 24 finished in CPU.
+At time 2579, Job 52 entered CPU.
+At time 2602, Job 52 finished in CPU.
+At time 2602, Job 53 entered CPU.
+At time 2606, Job 42 finished in DISK2.
+At time 2606, Job 4 entered DISK2.
+At time 2610, Job 53 finished in CPU.
+At time 2610, Job 53 has exited the system.
+At time 2610, Job 26 entered CPU.
+At time 2622, Job 57 arrives.
+At time 2657, Job 26 finished in CPU.
+At time 2657, Job 2 entered CPU.
+At time 2659, Job 58 arrives.
+At time 2664, Job 2 finished in CPU.
+At time 2664, Job 2 has exited the system.
+At time 2664, Job 54 entered CPU.
+At time 2675, Job 4 finished in DISK2.
+At time 2675, Job 34 entered DISK2.
+At time 2686, Job 59 arrives.
+At time 2687, Job 54 finished in CPU.
+At time 2687, Job 25 entered CPU.
+At time 2711, Job 41 finished in DISK1.
+At time 2711, Job 30 entered DISK1.
+At time 2734, Job 25 finished in CPU.
+At time 2734, Job 20 entered CPU.
+At time 2740, Job 60 arrives.
+At time 2740, Job 20 finished in CPU.
+At time 2740, Job 55 entered CPU.
+At time 2757, Job 55 finished in CPU.
+At time 2757, Job 55 has exited the system.
+At time 2757, Job 56 entered CPU.
+At time 2798, Job 56 finished in CPU.
+At time 2798, Job 56 has exited the system.
+At time 2798, Job 42 entered CPU.
+At time 2804, Job 61 arrives.
+At time 2822, Job 1 finished in NETWORK.
+At time 2822, Job 7 entered NETWORK.
+At time 2840, Job 62 arrives.
+At time 2845, Job 30 finished in DISK1.
+At time 2845, Job 45 entered DISK1.
+At time 2847, Job 42 finished in CPU.
+At time 2847, Job 42 has exited the system.
+At time 2847, Job 57 entered CPU.
+At time 2856, Job 34 finished in DISK2.
+At time 2856, Job 52 entered DISK2.
+At time 2884, Job 57 finished in CPU.
+At time 2884, Job 58 entered CPU.
+At time 2898, Job 63 arrives.
+At time 2911, Job 58 finished in CPU.
+At time 2911, Job 4 entered CPU.
+At time 2939, Job 64 arrives.
+At time 2942, Job 4 finished in CPU.
+At time 2942, Job 59 entered CPU.
+At time 2944, Job 52 finished in DISK2.
+At time 2944, Job 26 entered DISK2.
+At time 2957, Job 59 finished in CPU.
+At time 2957, Job 59 has exited the system.
+At time 2957, Job 41 entered CPU.
+At time 2967, Job 41 finished in CPU.
+At time 2967, Job 41 has exited the system.
+At time 2967, Job 60 entered CPU.
+At time 2992, Job 45 finished in DISK1.
+At time 2992, Job 51 entered DISK1.
+At time 2996, Job 60 finished in CPU.
+At time 2996, Job 61 entered CPU.
+At time 3001, Job 65 arrives.
+At time 3019, Job 61 finished in CPU.
+At time 3019, Job 1 entered CPU.
+At time 3043, Job 1 finished in CPU.
+At time 3043, Job 62 entered CPU.
+At time 3058, Job 66 arrives.
+At time 3064, Job 62 finished in CPU.
+At time 3064, Job 30 entered CPU.
+At time 3081, Job 30 finished in CPU.
+At time 3081, Job 34 entered CPU.
+At time 3091, Job 67 arrives.
+At time 3108, Job 26 finished in DISK2.
+At time 3108, Job 54 entered DISK2.
+At time 3118, Job 68 arrives.
+At time 3120, Job 34 finished in CPU.
+At time 3120, Job 63 entered CPU.
+At time 3150, Job 63 finished in CPU.
+At time 3150, Job 64 entered CPU.
+At time 3169, Job 69 arrives.
+At time 3169, Job 51 finished in DISK1.
+At time 3169, Job 25 entered DISK1.
+At time 3173, Job 64 finished in CPU.
+At time 3173, Job 64 has exited the system.
+At time 3173, Job 52 entered CPU.
+At time 3189, Job 52 finished in CPU.
+At time 3189, Job 45 entered CPU.
+At time 3223, Job 54 finished in DISK2.
+At time 3223, Job 20 entered DISK2.
+At time 3228, Job 45 finished in CPU.
+At time 3228, Job 65 entered CPU.
+At time 3229, Job 70 arrives.
+At time 3273, Job 65 finished in CPU.
+At time 3273, Job 66 entered CPU.
+At time 3285, Job 71 arrives.
+At time 3292, Job 66 finished in CPU.
+At time 3292, Job 66 has exited the system.
+At time 3292, Job 67 entered CPU.
+At time 3294, Job 25 finished in DISK1.
+At time 3294, Job 57 entered DISK1.
+At time 3337, Job 67 finished in CPU.
+At time 3337, Job 26 entered CPU.
+At time 3346, Job 26 finished in CPU.
+At time 3346, Job 68 entered CPU.
+At time 3347, Job 72 arrives.
+At time 3364, Job 20 finished in DISK2.
+At time 3364, Job 60 entered DISK2.
+At time 3380, Job 68 finished in CPU.
+At time 3380, Job 68 has exited the system.
+At time 3380, Job 69 entered CPU.
+At time 3405, Job 73 arrives.
+At time 3428, Job 69 finished in CPU.
+At time 3428, Job 51 entered CPU.
+At time 3434, Job 51 finished in CPU.
+At time 3434, Job 51 has exited the system.
+At time 3434, Job 54 entered CPU.
+At time 3450, Job 57 finished in DISK1.
+At time 3450, Job 58 entered DISK1.
+At time 3475, Job 54 finished in CPU.
+At time 3475, Job 54 has exited the system.
+At time 3475, Job 70 entered CPU.
+At time 3484, Job 74 arrives.
+At time 3492, Job 60 finished in DISK2.
+At time 3492, Job 61 entered DISK2.
+At time 3510, Job 70 finished in CPU.
+At time 3510, Job 70 has exited the system.
+At time 3510, Job 71 entered CPU.
+At time 3512, Job 75 arrives.
+At time 3517, Job 7 finished in NETWORK.
+At time 3517, Job 13 entered NETWORK.
+At time 3518, Job 71 finished in CPU.
+At time 3518, Job 25 entered CPU.
+At time 3536, Job 76 arrives.
+At time 3562, Job 25 finished in CPU.
+At time 3562, Job 72 entered CPU.
+At time 3569, Job 58 finished in DISK1.
+At time 3569, Job 1 entered DISK1.
+At time 3582, Job 61 finished in DISK2.
+At time 3582, Job 34 entered DISK2.
+At time 3598, Job 77 arrives.
+At time 3603, Job 72 finished in CPU.
+At time 3603, Job 72 has exited the system.
+At time 3603, Job 20 entered CPU.
+At time 3622, Job 78 arrives.
+At time 3623, Job 1 finished in DISK1.
+At time 3623, Job 63 entered DISK1.
+At time 3645, Job 20 finished in CPU.
+At time 3645, Job 73 entered CPU.
+At time 3662, Job 79 arrives.
+At time 3686, Job 73 finished in CPU.
+At time 3686, Job 57 entered CPU.
+At time 3700, Job 34 finished in DISK2.
+At time 3700, Job 45 entered DISK2.
+At time 3701, Job 80 arrives.
+At time 3735, Job 57 finished in CPU.
+At time 3735, Job 74 entered CPU.
+At time 3759, Job 81 arrives.
+At time 3771, Job 63 finished in DISK1.
+At time 3771, Job 65 entered DISK1.
+At time 3776, Job 74 finished in CPU.
+At time 3776, Job 60 entered CPU.
+At time 3784, Job 82 arrives.
+At time 3821, Job 83 arrives.
+At time 3825, Job 60 finished in CPU.
+At time 3825, Job 75 entered CPU.
+At time 3865, Job 75 finished in CPU.
+At time 3865, Job 7 entered CPU.
+At time 3885, Job 84 arrives.
+At time 3893, Job 65 finished in DISK1.
+At time 3893, Job 67 entered DISK1.
+At time 3894, Job 7 finished in CPU.
+At time 3894, Job 76 entered CPU.
+At time 3896, Job 45 finished in DISK2.
+At time 3896, Job 69 entered DISK2.
+At time 3925, Job 76 finished in CPU.
+At time 3925, Job 58 entered CPU.
+At time 3932, Job 58 finished in CPU.
+At time 3932, Job 58 has exited the system.
+At time 3932, Job 61 entered CPU.
+At time 3940, Job 85 arrives.
+At time 3949, Job 69 finished in DISK2.
+At time 3949, Job 71 entered DISK2.
+At time 3965, Job 86 arrives.
+At time 3974, Job 61 finished in CPU.
+At time 3974, Job 77 entered CPU.
+At time 4005, Job 77 finished in CPU.
+At time 4005, Job 78 entered CPU.
+At time 4015, Job 87 arrives.
+At time 4028, Job 67 finished in DISK1.
+At time 4028, Job 25 entered DISK1.
+At time 4033, Job 13 finished in NETWORK.
+At time 4033, Job 14 entered NETWORK.
+At time 4035, Job 78 finished in CPU.
+At time 4035, Job 1 entered CPU.
+At time 4062, Job 1 finished in CPU.
+At time 4062, Job 79 entered CPU.
+At time 4077, Job 71 finished in DISK2.
+At time 4077, Job 73 entered DISK2.
+At time 4088, Job 88 arrives.
+At time 4096, Job 79 finished in CPU.
+At time 4096, Job 34 entered CPU.
+At time 4132, Job 34 finished in CPU.
+At time 4132, Job 34 has exited the system.
+At time 4132, Job 80 entered CPU.
+At time 4150, Job 80 finished in CPU.
+At time 4150, Job 81 entered CPU.
+At time 4154, Job 89 arrives.
+At time 4171, Job 81 finished in CPU.
+At time 4171, Job 81 has exited the system.
+At time 4171, Job 63 entered CPU.
+At time 4187, Job 63 finished in CPU.
+At time 4187, Job 82 entered CPU.
+At time 4197, Job 25 finished in DISK1.
+At time 4197, Job 20 entered DISK1.
+At time 4214, Job 82 finished in CPU.
+At time 4214, Job 82 has exited the system.
+At time 4214, Job 83 entered CPU.
+At time 4227, Job 90 arrives.
+At time 4228, Job 73 finished in DISK2.
+At time 4228, Job 57 entered DISK2.
+At time 4261, Job 83 finished in CPU.
+At time 4261, Job 83 has exited the system.
+At time 4261, Job 84 entered CPU.
+At time 4295, Job 84 finished in CPU.
+At time 4295, Job 65 entered CPU.
+At time 4296, Job 91 arrives.
+At time 4321, Job 65 finished in CPU.
+At time 4321, Job 45 entered CPU.
+At time 4324, Job 57 finished in DISK2.
+At time 4324, Job 75 entered DISK2.
+At time 4341, Job 45 finished in CPU.
+At time 4341, Job 85 entered CPU.
+At time 4358, Job 92 arrives.
+At time 4359, Job 20 finished in DISK1.
+At time 4359, Job 74 entered DISK1.
+At time 4380, Job 75 finished in DISK2.
+At time 4380, Job 76 entered DISK2.
+At time 4381, Job 85 finished in CPU.
+At time 4381, Job 85 has exited the system.
+At time 4381, Job 69 entered CPU.
+At time 4392, Job 69 finished in CPU.
+At time 4392, Job 86 entered CPU.
+At time 4400, Job 93 arrives.
+At time 4430, Job 86 finished in CPU.
+At time 4430, Job 87 entered CPU.
+At time 4457, Job 87 finished in CPU.
+At time 4457, Job 87 has exited the system.
+At time 4457, Job 67 entered CPU.
+At time 4462, Job 94 arrives.
+At time 4476, Job 76 finished in DISK2.
+At time 4476, Job 61 entered DISK2.
+At time 4505, Job 74 finished in DISK1.
+At time 4505, Job 60 entered DISK1.
+At time 4506, Job 95 arrives.
+At time 4507, Job 67 finished in CPU.
+At time 4507, Job 13 entered CPU.
+At time 4549, Job 13 finished in CPU.
+At time 4549, Job 71 entered CPU.
+At time 4555, Job 96 arrives.
+At time 4577, Job 60 finished in DISK1.
+At time 4577, Job 7 entered DISK1.
+At time 4578, Job 71 finished in CPU.
+At time 4578, Job 88 entered CPU.
+At time 4582, Job 61 finished in DISK2.
+At time 4582, Job 77 entered DISK2.
+At time 4605, Job 14 finished in NETWORK.
+At time 4605, Job 15 entered NETWORK.
+At time 4607, Job 88 finished in CPU.
+At time 4607, Job 89 entered CPU.
+At time 4619, Job 97 arrives.
+At time 4643, Job 89 finished in CPU.
+At time 4643, Job 25 entered CPU.
+At time 4654, Job 77 finished in DISK2.
+At time 4654, Job 80 entered DISK2.
+At time 4671, Job 25 finished in CPU.
+At time 4671, Job 90 entered CPU.
+At time 4673, Job 98 arrives.
+At time 4701, Job 7 finished in DISK1.
+At time 4701, Job 78 entered DISK1.
+At time 4718, Job 90 finished in CPU.
+At time 4718, Job 90 has exited the system.
+At time 4718, Job 73 entered CPU.
+At time 4726, Job 99 arrives.
+At time 4751, Job 80 finished in DISK2.
+At time 4751, Job 63 entered DISK2.
+At time 4758, Job 73 finished in CPU.
+At time 4758, Job 91 entered CPU.
+At time 4759, Job 78 finished in DISK1.
+At time 4759, Job 1 entered DISK1.
+At time 4783, Job 100 arrives.
+At time 4794, Job 91 finished in CPU.
+At time 4794, Job 91 has exited the system.
+At time 4794, Job 57 entered CPU.
+At time 4818, Job 101 arrives.
+At time 4830, Job 63 finished in DISK2.
+At time 4830, Job 65 entered DISK2.
+At time 4837, Job 57 finished in CPU.
+At time 4837, Job 92 entered CPU.
+At time 4844, Job 1 finished in DISK1.
+At time 4844, Job 84 entered DISK1.
+At time 4869, Job 102 arrives.
+At time 4875, Job 92 finished in CPU.
+At time 4875, Job 20 entered CPU.
+At time 4897, Job 65 finished in DISK2.
+At time 4897, Job 45 entered DISK2.
+At time 4898, Job 84 finished in DISK1.
+At time 4898, Job 67 entered DISK1.
+At time 4916, Job 20 finished in CPU.
+At time 4916, Job 75 entered CPU.
+At time 4944, Job 75 finished in CPU.
+At time 4944, Job 93 entered CPU.
+At time 4949, Job 103 arrives.
+At time 4961, Job 93 finished in CPU.
+At time 4961, Job 94 entered CPU.
+At time 4978, Job 67 finished in DISK1.
+At time 4978, Job 71 entered DISK1.
+At time 4986, Job 104 arrives.
+At time 4997, Job 45 finished in DISK2.
+At time 4997, Job 88 entered DISK2.
+At time 5003, Job 94 finished in CPU.
+At time 5003, Job 76 entered CPU.
+At time 5014, Job 76 finished in CPU.
+At time 5014, Job 74 entered CPU.
+At time 5032, Job 74 finished in CPU.
+At time 5032, Job 74 has exited the system.
+At time 5032, Job 95 entered CPU.
+At time 5042, Job 105 arrives.
+At time 5045, Job 95 finished in CPU.
+At time 5045, Job 96 entered CPU.
+At time 5054, Job 96 finished in CPU.
+At time 5054, Job 60 entered CPU.
+At time 5076, Job 106 arrives.
+At time 5082, Job 60 finished in CPU.
+At time 5082, Job 60 has exited the system.
+At time 5082, Job 61 entered CPU.
+At time 5088, Job 71 finished in DISK1.
+At time 5088, Job 57 entered DISK1.
+At time 5109, Job 61 finished in CPU.
+At time 5109, Job 14 entered CPU.
+At time 5136, Job 107 arrives.
+At time 5148, Job 88 finished in DISK2.
+At time 5148, Job 25 entered DISK2.
+At time 5158, Job 14 finished in CPU.
+At time 5158, Job 97 entered CPU.
+At time 5178, Job 57 finished in DISK1.
+At time 5178, Job 92 entered DISK1.
+At time 5189, Job 15 finished in NETWORK.
+At time 5189, Job 17 entered NETWORK.
+At time 5190, Job 108 arrives.
+At time 5206, Job 97 finished in CPU.
+At time 5206, Job 77 entered CPU.
+At time 5212, Job 77 finished in CPU.
+At time 5212, Job 77 has exited the system.
+At time 5212, Job 98 entered CPU.
+At time 5244, Job 98 finished in CPU.
+At time 5244, Job 98 has exited the system.
+At time 5244, Job 7 entered CPU.
+At time 5248, Job 109 arrives.
+At time 5270, Job 7 finished in CPU.
+At time 5270, Job 99 entered CPU.
+At time 5285, Job 92 finished in DISK1.
+At time 5285, Job 75 entered DISK1.
+At time 5308, Job 110 arrives.
+At time 5310, Job 99 finished in CPU.
+At time 5310, Job 80 entered CPU.
+At time 5329, Job 111 arrives.
+At time 5336, Job 25 finished in DISK2.
+At time 5336, Job 73 entered DISK2.
+At time 5347, Job 80 finished in CPU.
+At time 5347, Job 78 entered CPU.
+At time 5355, Job 112 arrives.
+At time 5386, Job 78 finished in CPU.
+At time 5386, Job 78 has exited the system.
+At time 5386, Job 100 entered CPU.
+At time 5390, Job 113 arrives.
+At time 5391, Job 73 finished in DISK2.
+At time 5391, Job 20 entered DISK2.
+At time 5410, Job 100 finished in CPU.
+At time 5410, Job 100 has exited the system.
+At time 5410, Job 101 entered CPU.
+At time 5428, Job 75 finished in DISK1.
+At time 5428, Job 76 entered DISK1.
+At time 5434, Job 101 finished in CPU.
+At time 5434, Job 101 has exited the system.
+At time 5434, Job 63 entered CPU.
+At time 5445, Job 114 arrives.
+At time 5453, Job 63 finished in CPU.
+At time 5453, Job 1 entered CPU.
+At time 5480, Job 1 finished in CPU.
+At time 5480, Job 102 entered CPU.
+At time 5482, Job 115 arrives.
+At time 5498, Job 20 finished in DISK2.
+At time 5498, Job 94 entered DISK2.
+At time 5503, Job 102 finished in CPU.
+At time 5503, Job 65 entered CPU.
+At time 5518, Job 116 arrives.
+At time 5531, Job 65 finished in CPU.
+At time 5531, Job 84 entered CPU.
+At time 5563, Job 94 finished in DISK2.
+At time 5563, Job 95 entered DISK2.
+At time 5575, Job 84 finished in CPU.
+At time 5575, Job 103 entered CPU.
+At time 5589, Job 117 arrives.
+At time 5591, Job 103 finished in CPU.
+At time 5591, Job 67 entered CPU.
+At time 5617, Job 118 arrives.
+At time 5625, Job 76 finished in DISK1.
+At time 5625, Job 96 entered DISK1.
+At time 5636, Job 67 finished in CPU.
+At time 5636, Job 104 entered CPU.
+At time 5681, Job 104 finished in CPU.
+At time 5681, Job 45 entered CPU.
+At time 5692, Job 45 finished in CPU.
+At time 5692, Job 105 entered CPU.
+At time 5693, Job 119 arrives.
+At time 5704, Job 105 finished in CPU.
+At time 5704, Job 106 entered CPU.
+At time 5727, Job 106 finished in CPU.
+At time 5727, Job 71 entered CPU.
+At time 5732, Job 120 arrives.
+At time 5756, Job 95 finished in DISK2.
+At time 5756, Job 14 entered DISK2.
+At time 5759, Job 71 finished in CPU.
+At time 5759, Job 71 has exited the system.
+At time 5759, Job 107 entered CPU.
+At time 5763, Job 121 arrives.
+At time 5792, Job 107 finished in CPU.
+At time 5792, Job 88 entered CPU.
+At time 5820, Job 96 finished in DISK1.
+At time 5820, Job 61 entered DISK1.
+At time 5824, Job 14 finished in DISK2.
+At time 5824, Job 88 finished in CPU.
+At time 5824, Job 7 entered DISK2.
+At time 5824, Job 57 entered CPU.
+At time 5832, Job 122 arrives.
+At time 5851, Job 57 finished in CPU.
+At time 5851, Job 15 entered CPU.
+At time 5867, Job 17 finished in NETWORK.
+At time 5867, Job 21 entered NETWORK.
+At time 5868, Job 15 finished in CPU.
+At time 5868, Job 108 entered CPU.
+At time 5888, Job 123 arrives.
+At time 5891, Job 108 finished in CPU.
+At time 5891, Job 109 entered CPU.
+At time 5937, Job 109 finished in CPU.
+At time 5937, Job 92 entered CPU.
+At time 5958, Job 124 arrives.
+At time 5958, Job 7 finished in DISK2.
+At time 5958, Job 102 entered DISK2.
+At time 5973, Job 61 finished in DISK1.
+At time 5973, Job 97 entered DISK1.
+At time 5975, Job 92 finished in CPU.
+At time 5975, Job 110 entered CPU.
+At time 5984, Job 125 arrives.
+At time 6023, Job 110 finished in CPU.
+At time 6023, Job 111 entered CPU.
+At time 6049, Job 97 finished in DISK1.
+At time 6049, Job 63 entered DISK1.
+At time 6056, Job 126 arrives.
+At time 6064, Job 111 finished in CPU.
+At time 6064, Job 25 entered CPU.
+At time 6107, Job 25 finished in CPU.
+At time 6107, Job 112 entered CPU.
+At time 6111, Job 127 arrives.
+At time 6116, Job 112 finished in CPU.
+At time 6116, Job 113 entered CPU.
+At time 6151, Job 102 finished in DISK2.
+At time 6151, Job 84 entered DISK2.
+At time 6155, Job 113 finished in CPU.
+At time 6155, Job 73 entered CPU.
+At time 6187, Job 128 arrives.
+At time 6188, Job 63 finished in DISK1.
+At time 6188, Job 1 entered DISK1.
+At time 6191, Job 73 finished in CPU.
+At time 6191, Job 73 has exited the system.
+At time 6191, Job 75 entered CPU.
+At time 6223, Job 75 finished in CPU.
+At time 6223, Job 114 entered CPU.
+At time 6230, Job 84 finished in DISK2.
+At time 6230, Job 103 entered DISK2.
+At time 6257, Job 114 finished in CPU.
+At time 6257, Job 115 entered CPU.
+At time 6259, Job 129 arrives.
+At time 6283, Job 130 arrives.
+At time 6289, Job 115 finished in CPU.
+At time 6289, Job 115 has exited the system.
+At time 6289, Job 20 entered CPU.
+At time 6335, Job 20 finished in CPU.
+At time 6335, Job 20 has exited the system.
+At time 6335, Job 116 entered CPU.
+At time 6336, Job 103 finished in DISK2.
+At time 6336, Job 104 entered DISK2.
+At time 6347, Job 1 finished in DISK1.
+At time 6347, Job 67 entered DISK1.
+At time 6357, Job 116 finished in CPU.
+At time 6357, Job 94 entered CPU.
+At time 6362, Job 131 arrives.
+At time 6372, Job 94 finished in CPU.
+At time 6372, Job 94 has exited the system.
+At time 6372, Job 117 entered CPU.
+At time 6378, Job 117 finished in CPU.
+At time 6378, Job 118 entered CPU.
+At time 6414, Job 118 finished in CPU.
+At time 6414, Job 118 has exited the system.
+At time 6414, Job 76 entered CPU.
+At time 6425, Job 132 arrives.
+At time 6439, Job 76 finished in CPU.
+At time 6439, Job 76 has exited the system.
+At time 6439, Job 119 entered CPU.
+At time 6476, Job 119 finished in CPU.
+At time 6476, Job 120 entered CPU.
+At time 6483, Job 133 arrives.
+At time 6491, Job 104 finished in DISK2.
+At time 6491, Job 106 entered DISK2.
+At time 6505, Job 67 finished in DISK1.
+At time 6505, Job 45 entered DISK1.
+At time 6511, Job 120 finished in CPU.
+At time 6511, Job 95 entered CPU.
+At time 6518, Job 95 finished in CPU.
+At time 6518, Job 121 entered CPU.
+At time 6528, Job 134 arrives.
+At time 6545, Job 21 finished in NETWORK.
+At time 6545, Job 10 entered NETWORK.
+At time 6565, Job 121 finished in CPU.
+At time 6565, Job 96 entered CPU.
+At time 6572, Job 135 arrives.
+At time 6587, Job 96 finished in CPU.
+At time 6587, Job 14 entered CPU.
+At time 6601, Job 45 finished in DISK1.
+At time 6601, Job 105 entered DISK1.
+At time 6604, Job 14 finished in CPU.
+At time 6604, Job 14 has exited the system.
+At time 6604, Job 122 entered CPU.
+At time 6620, Job 106 finished in DISK2.
+At time 6620, Job 107 entered DISK2.
+At time 6632, Job 136 arrives.
+At time 6652, Job 122 finished in CPU.
+At time 6652, Job 17 entered CPU.
+At time 6666, Job 17 finished in CPU.
+At time 6666, Job 123 entered CPU.
+At time 6677, Job 137 arrives.
+At time 6689, Job 123 finished in CPU.
+At time 6689, Job 124 entered CPU.
+At time 6708, Job 105 finished in DISK1.
+At time 6708, Job 57 entered DISK1.
+At time 6737, Job 124 finished in CPU.
+At time 6737, Job 7 entered CPU.
+At time 6757, Job 138 arrives.
+At time 6783, Job 7 finished in CPU.
+At time 6783, Job 61 entered CPU.
+At time 6813, Job 107 finished in DISK2.
+At time 6813, Job 88 entered DISK2.
+At time 6819, Job 61 finished in CPU.
+At time 6819, Job 125 entered CPU.
+At time 6825, Job 139 arrives.
+At time 6828, Job 125 finished in CPU.
+At time 6828, Job 97 entered CPU.
+At time 6843, Job 97 finished in CPU.
+At time 6843, Job 126 entered CPU.
+At time 6846, Job 140 arrives.
+At time 6857, Job 126 finished in CPU.
+At time 6857, Job 127 entered CPU.
+At time 6862, Job 127 finished in CPU.
+At time 6862, Job 102 entered CPU.
+At time 6864, Job 88 finished in DISK2.
+At time 6864, Job 109 entered DISK2.
+At time 6887, Job 141 arrives.
+At time 6898, Job 57 finished in DISK1.
+At time 6898, Job 92 entered DISK1.
+At time 6909, Job 102 finished in CPU.
+At time 6909, Job 128 entered CPU.
+At time 6953, Job 128 finished in CPU.
+At time 6953, Job 63 entered CPU.
+At time 6954, Job 142 arrives.
+At time 6978, Job 63 finished in CPU.
+At time 6978, Job 63 has exited the system.
+At time 6978, Job 84 entered CPU.
+At time 6984, Job 109 finished in DISK2.
+At time 6984, Job 110 entered DISK2.
+At time 6998, Job 143 arrives.
+At time 6999, Job 92 finished in DISK1.
+At time 6999, Job 111 entered DISK1.
+At time 7000, Job 84 finished in CPU.
+At time 7000, Job 129 entered CPU.
+At time 7029, Job 129 finished in CPU.
+At time 7029, Job 130 entered CPU.
+At time 7039, Job 144 arrives.
+At time 7078, Job 130 finished in CPU.
+At time 7078, Job 103 entered CPU.
+At time 7087, Job 103 finished in CPU.
+At time 7087, Job 103 has exited the system.
+At time 7087, Job 1 entered CPU.
+At time 7106, Job 145 arrives.
+At time 7130, Job 110 finished in DISK2.
+At time 7130, Job 116 entered DISK2.
+At time 7132, Job 1 finished in CPU.
+At time 7132, Job 1 has exited the system.
+At time 7132, Job 131 entered CPU.
+At time 7141, Job 10 finished in NETWORK.
+At time 7141, Job 5 entered NETWORK.
+At time 7142, Job 131 finished in CPU.
+At time 7142, Job 132 entered CPU.
+At time 7157, Job 146 arrives.
+At time 7189, Job 132 finished in CPU.
+At time 7189, Job 133 entered CPU.
+At time 7193, Job 111 finished in DISK1.
+At time 7193, Job 112 entered DISK1.
+At time 7206, Job 133 finished in CPU.
+At time 7206, Job 104 entered CPU.
+At time 7218, Job 116 finished in DISK2.
+At time 7218, Job 119 entered DISK2.
+At time 7228, Job 104 finished in CPU.
+At time 7228, Job 67 entered CPU.
+At time 7235, Job 147 arrives.
+At time 7256, Job 148 arrives.
+At time 7266, Job 67 finished in CPU.
+At time 7266, Job 134 entered CPU.
+At time 7271, Job 134 finished in CPU.
+At time 7271, Job 21 entered CPU.
+At time 7288, Job 149 arrives.
+At time 7293, Job 21 finished in CPU.
+At time 7293, Job 135 entered CPU.
+At time 7341, Job 135 finished in CPU.
+At time 7341, Job 135 has exited the system.
+At time 7341, Job 45 entered CPU.
+At time 7343, Job 119 finished in DISK2.
+At time 7343, Job 122 entered DISK2.
+At time 7360, Job 150 arrives.
+At time 7383, Job 112 finished in DISK1.
+At time 7383, Job 120 entered DISK1.
+At time 7387, Job 45 finished in CPU.
+At time 7387, Job 106 entered CPU.
+At time 7395, Job 106 finished in CPU.
+At time 7395, Job 136 entered CPU.
+At time 7400, Job 136 finished in CPU.
+At time 7400, Job 137 entered CPU.
+At time 7416, Job 151 arrives.
+At time 7443, Job 137 finished in CPU.
+At time 7443, Job 105 entered CPU.
+At time 7462, Job 105 finished in CPU.
+At time 7462, Job 105 has exited the system.
+At time 7462, Job 138 entered CPU.
+At time 7480, Job 152 arrives.
+At time 7484, Job 120 finished in DISK1.
+At time 7484, Job 95 entered DISK1.
+At time 7511, Job 138 finished in CPU.
+At time 7511, Job 138 has exited the system.
+At time 7511, Job 107 entered CPU.
+At time 7523, Job 107 finished in CPU.
+At time 7523, Job 139 entered CPU.
+At time 7534, Job 153 arrives.
+At time 7537, Job 122 finished in DISK2.
+At time 7537, Job 7 entered DISK2.
+At time 7573, Job 139 finished in CPU.
+At time 7573, Job 139 has exited the system.
+At time 7573, Job 140 entered CPU.
+At time 7596, Job 154 arrives.
+At time 7613, Job 140 finished in CPU.
+At time 7613, Job 88 entered CPU.
+At time 7644, Job 155 arrives.
+At time 7645, Job 88 finished in CPU.
+At time 7645, Job 141 entered CPU.
+At time 7673, Job 95 finished in DISK1.
+At time 7673, Job 124 entered DISK1.
+At time 7683, Job 156 arrives.
+At time 7687, Job 141 finished in CPU.
+At time 7687, Job 57 entered CPU.
+At time 7711, Job 57 finished in CPU.
+At time 7711, Job 142 entered CPU.
+At time 7727, Job 7 finished in DISK2.
+At time 7727, Job 61 entered DISK2.
+At time 7745, Job 157 arrives.
+At time 7758, Job 142 finished in CPU.
+At time 7758, Job 109 entered CPU.
+At time 7761, Job 5 finished in NETWORK.
+At time 7761, Job 29 entered NETWORK.
+At time 7784, Job 109 finished in CPU.
+At time 7784, Job 143 entered CPU.
+At time 7802, Job 143 finished in CPU.
+At time 7802, Job 92 entered CPU.
+At time 7818, Job 124 finished in DISK1.
+At time 7818, Job 125 entered DISK1.
+At time 7824, Job 158 arrives.
+At time 7845, Job 92 finished in CPU.
+At time 7845, Job 144 entered CPU.
+At time 7887, Job 61 finished in DISK2.
+At time 7887, Job 97 entered DISK2.
+At time 7890, Job 144 finished in CPU.
+At time 7890, Job 145 entered CPU.
+At time 7892, Job 125 finished in DISK1.
+At time 7892, Job 126 entered DISK1.
+At time 7902, Job 159 arrives.
+At time 7925, Job 145 finished in CPU.
+At time 7925, Job 110 entered CPU.
+At time 7950, Job 160 arrives.
+At time 7971, Job 97 finished in DISK2.
+At time 7971, Job 127 entered DISK2.
+At time 7975, Job 110 finished in CPU.
+At time 7975, Job 10 entered CPU.
+At time 7987, Job 161 arrives.
+At time 7994, Job 10 finished in CPU.
+At time 7994, Job 10 has exited the system.
+At time 7994, Job 146 entered CPU.
+At time 8034, Job 146 finished in CPU.
+At time 8034, Job 111 entered CPU.
+At time 8043, Job 162 arrives.
+At time 8067, Job 111 finished in CPU.
+At time 8067, Job 116 entered CPU.
+At time 8068, Job 126 finished in DISK1.
+At time 8068, Job 102 entered DISK1.
+At time 8088, Job 127 finished in DISK2.
+At time 8088, Job 84 entered DISK2.
+At time 8097, Job 116 finished in CPU.
+At time 8097, Job 147 entered CPU.
+At time 8102, Job 163 arrives.
+At time 8111, Job 147 finished in CPU.
+At time 8111, Job 148 entered CPU.
+At time 8136, Job 148 finished in CPU.
+At time 8136, Job 148 has exited the system.
+At time 8136, Job 149 entered CPU.
+At time 8142, Job 84 finished in DISK2.
+At time 8142, Job 129 entered DISK2.
+At time 8154, Job 164 arrives.
+At time 8174, Job 165 arrives.
+At time 8185, Job 149 finished in CPU.
+At time 8185, Job 119 entered CPU.
+At time 8209, Job 119 finished in CPU.
+At time 8209, Job 119 has exited the system.
+At time 8209, Job 150 entered CPU.
+At time 8226, Job 102 finished in DISK1.
+At time 8226, Job 128 entered DISK1.
+At time 8236, Job 150 finished in CPU.
+At time 8236, Job 112 entered CPU.
+At time 8248, Job 166 arrives.
+At time 8270, Job 167 arrives.
+At time 8272, Job 112 finished in CPU.
+At time 8272, Job 151 entered CPU.
+At time 8292, Job 151 finished in CPU.
+At time 8292, Job 152 entered CPU.
+At time 8303, Job 168 arrives.
+At time 8324, Job 152 finished in CPU.
+At time 8324, Job 120 entered CPU.
+At time 8329, Job 169 arrives.
+At time 8333, Job 129 finished in DISK2.
+At time 8333, Job 131 entered DISK2.
+At time 8344, Job 120 finished in CPU.
+At time 8344, Job 153 entered CPU.
+At time 8362, Job 153 finished in CPU.
+At time 8362, Job 122 entered CPU.
+At time 8367, Job 170 arrives.
+At time 8388, Job 128 finished in DISK1.
+At time 8388, Job 133 entered DISK1.
+At time 8397, Job 122 finished in CPU.
+At time 8397, Job 154 entered CPU.
+At time 8400, Job 131 finished in DISK2.
+At time 8400, Job 134 entered DISK2.
+At time 8420, Job 171 arrives.
+At time 8442, Job 154 finished in CPU.
+At time 8442, Job 154 has exited the system.
+At time 8442, Job 155 entered CPU.
+At time 8449, Job 172 arrives.
+At time 8451, Job 29 finished in NETWORK.
+At time 8451, Job 12 entered NETWORK.
+At time 8457, Job 155 finished in CPU.
+At time 8457, Job 95 entered CPU.
+At time 8472, Job 133 finished in DISK1.
+At time 8472, Job 104 entered DISK1.
+At time 8482, Job 173 arrives.
+At time 8505, Job 95 finished in CPU.
+At time 8505, Job 156 entered CPU.
+At time 8511, Job 134 finished in DISK2.
+At time 8511, Job 21 entered DISK2.
+At time 8512, Job 156 finished in CPU.
+At time 8512, Job 7 entered CPU.
+At time 8536, Job 7 finished in CPU.
+At time 8536, Job 157 entered CPU.
+At time 8541, Job 157 finished in CPU.
+At time 8541, Job 5 entered CPU.
+At time 8550, Job 174 arrives.
+At time 8551, Job 5 finished in CPU.
+At time 8551, Job 124 entered CPU.
+At time 8573, Job 124 finished in CPU.
+At time 8573, Job 158 entered CPU.
+At time 8590, Job 175 arrives.
+At time 8603, Job 104 finished in DISK1.
+At time 8603, Job 45 entered DISK1.
+At time 8617, Job 158 finished in CPU.
+At time 8617, Job 61 entered CPU.
+At time 8635, Job 61 finished in CPU.
+At time 8635, Job 125 entered CPU.
+At time 8667, Job 176 arrives.
+At time 8672, Job 125 finished in CPU.
+At time 8672, Job 159 entered CPU.
+At time 8706, Job 21 finished in DISK2.
+At time 8706, Job 136 entered DISK2.
+At time 8715, Job 177 arrives.
+At time 8721, Job 159 finished in CPU.
+At time 8721, Job 160 entered CPU.
+At time 8723, Job 45 finished in DISK1.
+At time 8723, Job 106 entered DISK1.
+At time 8734, Job 160 finished in CPU.
+At time 8734, Job 97 entered CPU.
+At time 8763, Job 97 finished in CPU.
+At time 8763, Job 161 entered CPU.
+At time 8785, Job 178 arrives.
+At time 8804, Job 161 finished in CPU.
+At time 8804, Job 162 entered CPU.
+At time 8827, Job 162 finished in CPU.
+At time 8827, Job 126 entered CPU.
+At time 8844, Job 179 arrives.
+At time 8869, Job 126 finished in CPU.
+At time 8869, Job 127 entered CPU.
+At time 8881, Job 180 arrives.
+At time 8882, Job 136 finished in DISK2.
+At time 8882, Job 57 entered DISK2.
+At time 8904, Job 106 finished in DISK1.
+At time 8904, Job 107 entered DISK1.
+At time 8909, Job 127 finished in CPU.
+At time 8909, Job 163 entered CPU.
+At time 8928, Job 163 finished in CPU.
+At time 8928, Job 84 entered CPU.
+At time 8935, Job 181 arrives.
+At time 8960, Job 84 finished in CPU.
+At time 8960, Job 164 entered CPU.
+At time 8973, Job 164 finished in CPU.
+At time 8973, Job 165 entered CPU.
+At time 8976, Job 182 arrives.
+At time 8984, Job 107 finished in DISK1.
+At time 8984, Job 109 entered DISK1.
+At time 8990, Job 57 finished in DISK2.
+At time 8990, Job 142 entered DISK2.
+At time 9011, Job 165 finished in CPU.
+At time 9011, Job 165 has exited the system.
+At time 9011, Job 102 entered CPU.
+At time 9023, Job 102 finished in CPU.
+At time 9023, Job 166 entered CPU.
+At time 9031, Job 183 arrives.
+At time 9035, Job 166 finished in CPU.
+At time 9035, Job 167 entered CPU.
+At time 9048, Job 12 finished in NETWORK.
+At time 9048, Job 33 entered NETWORK.
+At time 9068, Job 167 finished in CPU.
+At time 9068, Job 168 entered CPU.
+At time 9069, Job 184 arrives.
+At time 9080, Job 109 finished in DISK1.
+At time 9080, Job 143 entered DISK1.
+At time 9081, Job 168 finished in CPU.
+At time 9081, Job 169 entered CPU.
+At time 9095, Job 169 finished in CPU.
+At time 9095, Job 129 entered CPU.
+At time 9111, Job 142 finished in DISK2.
+At time 9111, Job 92 entered DISK2.
+At time 9133, Job 185 arrives.
+At time 9138, Job 129 finished in CPU.
+At time 9138, Job 170 entered CPU.
+At time 9148, Job 143 finished in DISK1.
+At time 9148, Job 145 entered DISK1.
+At time 9155, Job 186 arrives.
+At time 9182, Job 170 finished in CPU.
+At time 9182, Job 128 entered CPU.
+At time 9183, Job 187 arrives.
+At time 9227, Job 128 finished in CPU.
+At time 9227, Job 131 entered CPU.
+At time 9239, Job 188 arrives.
+At time 9239, Job 131 finished in CPU.
+At time 9239, Job 131 has exited the system.
+At time 9239, Job 171 entered CPU.
+At time 9261, Job 92 finished in DISK2.
+At time 9261, Job 146 entered DISK2.
+At time 9269, Job 171 finished in CPU.
+At time 9269, Job 172 entered CPU.
+At time 9289, Job 172 finished in CPU.
+At time 9289, Job 29 entered CPU.
+At time 9304, Job 189 arrives.
+At time 9315, Job 145 finished in DISK1.
+At time 9315, Job 149 entered DISK1.
+At time 9329, Job 29 finished in CPU.
+At time 9329, Job 133 entered CPU.
+At time 9344, Job 146 finished in DISK2.
+At time 9344, Job 111 entered DISK2.
+At time 9361, Job 190 arrives.
+At time 9366, Job 133 finished in CPU.
+At time 9366, Job 173 entered CPU.
+At time 9381, Job 173 finished in CPU.
+At time 9381, Job 134 entered CPU.
+At time 9402, Job 191 arrives.
+At time 9407, Job 149 finished in DISK1.
+At time 9407, Job 150 entered DISK1.
+At time 9424, Job 134 finished in CPU.
+At time 9424, Job 174 entered CPU.
+At time 9432, Job 174 finished in CPU.
+At time 9432, Job 175 entered CPU.
+At time 9443, Job 192 arrives.
+At time 9443, Job 111 finished in DISK2.
+At time 9443, Job 151 entered DISK2.
+At time 9447, Job 175 finished in CPU.
+At time 9447, Job 104 entered CPU.
+At time 9492, Job 104 finished in CPU.
+At time 9492, Job 176 entered CPU.
+At time 9505, Job 193 arrives.
+At time 9520, Job 176 finished in CPU.
+At time 9520, Job 21 entered CPU.
+At time 9535, Job 21 finished in CPU.
+At time 9535, Job 177 entered CPU.
+At time 9541, Job 194 arrives.
+At time 9570, Job 151 finished in DISK2.
+At time 9570, Job 120 entered DISK2.
+At time 9573, Job 150 finished in DISK1.
+At time 9573, Job 153 entered DISK1.
+At time 9582, Job 177 finished in CPU.
+At time 9582, Job 45 entered CPU.
+At time 9609, Job 195 arrives.
+At time 9625, Job 45 finished in CPU.
+At time 9625, Job 178 entered CPU.
+At time 9627, Job 33 finished in NETWORK.
+At time 9627, Job 35 entered NETWORK.
+At time 9659, Job 178 finished in CPU.
+At time 9659, Job 179 entered CPU.
+At time 9687, Job 196 arrives.
+At time 9690, Job 120 finished in DISK2.
+At time 9690, Job 155 entered DISK2.
+At time 9692, Job 179 finished in CPU.
+At time 9692, Job 180 entered CPU.
+At time 9719, Job 153 finished in DISK1.
+At time 9719, Job 122 entered DISK1.
+At time 9739, Job 180 finished in CPU.
+At time 9739, Job 136 entered CPU.
+At time 9756, Job 197 arrives.
+At time 9787, Job 136 finished in CPU.
+At time 9787, Job 106 entered CPU.
+At time 9806, Job 106 finished in CPU.
+At time 9806, Job 181 entered CPU.
+At time 9824, Job 198 arrives.
+At time 9841, Job 181 finished in CPU.
+At time 9841, Job 182 entered CPU.
+At time 9866, Job 199 arrives.
+At time 9867, Job 122 finished in DISK1.
+At time 9867, Job 95 entered DISK1.
+At time 9878, Job 182 finished in CPU.
+At time 9878, Job 107 entered CPU.
+At time 9881, Job 155 finished in DISK2.
+At time 9881, Job 156 entered DISK2.
+At time 9899, Job 107 finished in CPU.
+At time 9899, Job 57 entered CPU.
+At time 9906, Job 200 arrives.
+At time 9934, Job 201 arrives.
+At time 9944, Job 57 finished in CPU.
+At time 9944, Job 183 entered CPU.
+At time 9946, Job 156 finished in DISK2.
+At time 9946, Job 7 entered DISK2.
+At time 9988, Job 183 finished in CPU.
+At time 9988, Job 12 entered CPU.
+At time 9996, Job 95 finished in DISK1.
+At time 9996, Job 5 entered DISK1.
+At time 10000, Simulation Finished.

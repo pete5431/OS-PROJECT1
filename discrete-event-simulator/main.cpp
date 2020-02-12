@@ -10,14 +10,14 @@ using namespace std;
 int sys_time;
 // The current number of jobs.
 int job_num = 1;
-// The jobs that exited the system.
-int job_left = 0;
 
+// The component occupied status.
 bool CPU_BUSY = false;
 bool DISK1_BUSY = false;
 bool DISK2_BUSY = false;
 bool NETWORK_BUSY = false;
 
+// enum for the types of events.
 enum{
 	PROCESS_ARRV = 1,
         CPU_ARRV = 2,
@@ -32,13 +32,14 @@ enum{
 	SYS_FIN = 11
 };
 
+// Global queues for each component.
 queue<Event> CPU;
 queue<Event> DISK1;
 queue<Event> DISK2;
 queue<Event> NETWORK;
 
+// All functions behave as their name dictates.
 void job_arrival_handler(FileParam, priority_queue<Event>&, Event);
-void job_finish_handler(Event);
 void cpu_arrival_handler(FileParam&, priority_queue<Event>&, Event);
 void cpu_finish_handler(FileParam, priority_queue<Event>&, Event);
 void disk1_arrival_handler(FileParam&, priority_queue<Event>&, Event);
@@ -52,17 +53,24 @@ void write_constants(FILE* fp, FileParam);
 
 int main(){
 
+	// Object FileParam that holds all the constants and statistics values.
 	FileParam sys;
 
+	// Read in the constants from file.
 	sys.read_file((char*)"config.txt");
 
+	// Set the system time to INIT_TIME.
 	sys_time = sys.INIT_TIME;	
 
+	// Set the seed to SEED.
 	srand(sys.SEED);
 
+	// Declare priority queue.
 	priority_queue<Event> events;	
 
+	// Initialize file pointer to file for writing to log.
 	FILE* fp = fopen("log.txt", "w");
+	// Writes the constants from FileParam to log.
 	write_constants(fp, sys);
 
 	if(fp == NULL){
@@ -85,17 +93,21 @@ int main(){
 	events.push(next_event);
 	job_num++;
 
+	// Used to the total time passed by saving time of previous event.
 	int previous_time = 0;
 
 	// While the priority queue is not empty and the system time is not equal to FIN_TIME.
 	while(!events.empty() && sys_time != sys.FIN_TIME){
 		
+		// Pop next event.	
 		next_event = events.top();
 		events.pop();
-
+		// Calculate statistics for the queues.
 		calculate_statistics(sys, previous_time, next_event.time);
 		previous_time = next_event.time;
 
+		// Handle based off event type. Increments jobs completed upon getting FIN type. 
+		// Sets the system time to the popped event time. Print the event to log.
 		switch(next_event.type){
 			case PROCESS_ARRV:
 				print_log(fp, next_event);
@@ -105,7 +117,7 @@ int main(){
 			case PROCESS_EXIT:
 				print_log(fp, next_event);
 				sys_time = next_event.time;
-				job_finish_handler(next_event);
+				(sys.CPU_JOBS_COMPLETE)++;
 				break;
 			case CPU_ARRV:
 				print_log(fp, next_event);
@@ -137,7 +149,7 @@ int main(){
 			case DISK2_FIN:
 				print_log(fp, next_event);
 				sys_time = next_event.time;
-				(sys.DISK2_JOBS_COMPLETE);
+				(sys.DISK2_JOBS_COMPLETE)++;
 				disk2_finish_handler(sys, events, next_event);
 				break;
 			case NETWORK_ARRV:
@@ -160,28 +172,7 @@ int main(){
 		}		
 	}
 
-	cout << "Network Remaining: " << NETWORK.size() << "\n";
-	cout << "CPU Remaining: " << CPU.size() << "\n";
-	cout << "DISK1 Remaining: " << DISK1.size() << "\n";
-	cout << "DISK2 Remaining: " << DISK2.size() << "\n";
-
-	cout << "\n" << "Total Jobs: " << job_num << " Total Jobs Left: " << job_left << "\n";	
-
-	cout << sys.CPU_MAX_SIZE << " " << (sys.CPU_QUEUE_SUM / sys.FIN_TIME) << "\n";
-	cout << sys.DISK1_MAX_SIZE << " " << (sys.DISK1_QUEUE_SUM / sys.FIN_TIME) << "\n";
-	cout << sys.DISK2_MAX_SIZE << " " << (sys.DISK2_QUEUE_SUM / sys.FIN_TIME) << "\n";
-	cout << sys.NETWORK_MAX_SIZE << " " << (sys.NETWORK_QUEUE_SUM / sys.FIN_TIME) << "\n";
-
-	cout << "CPU BUSY for : " << sys.CPU_BUSY_TOTAL << "\n";
-
-	cout << "DISK1 BUSY for: " << sys.DISK1_BUSY_TOTAL << "\n";
-	cout << "DISK2 BUSY for: " << sys.DISK2_BUSY_TOTAL << "\n";
-	cout << "NETWORK BUSY for: " << sys.NETWORK_BUSY_TOTAL << "\n";
-
-	cout << "JOBS CPU FINISHED: " << sys.CPU_JOBS_COMPLETE << "\n";
-
-	cout << sys.TOTAL << "\n";
-
+	// Write all finalized statistics to "statistics.txt".
 	write_statistic_file(sys);
 
 	fclose(fp);
@@ -213,10 +204,6 @@ void job_arrival_handler(FileParam sys, priority_queue<Event>& events, Event nex
 	}
 }
 
-void job_finish_handler(Event next_event){
-	job_left++;
-}
-
 void cpu_arrival_handler(FileParam& sys, priority_queue<Event>& events, Event next_event){
 
 	// When new job arrives in CPU, CPU is busy.
@@ -242,17 +229,22 @@ void cpu_arrival_handler(FileParam& sys, priority_queue<Event>& events, Event ne
 
 void cpu_finish_handler(FileParam sys, priority_queue<Event>& events, Event next_event){
 
+	// Set the CPU to not occupied.
 	CPU_BUSY = false;
+	// The next event popped from CPU queue if queue not empty.
 	Event next_cpu_event;
 
+	// The probability to handler quit prob and network prob.
 	double prob = rand_prob();
 
+	// If process exits, then push the event onto queue.
 	if(prob < sys.QUIT_PROB){
 		next_event.type = PROCESS_EXIT;
 		events.push(next_event);
 	}
 	else{
 		prob = rand_prob();	
+		// else check if it goes to network or either of the disks based off shorter queue size.
 		if(prob < sys.NETWORK_PROB){
 			next_event.type = NETWORK_ARRV;
 			if(!NETWORK_BUSY && NETWORK.empty()){
@@ -267,6 +259,7 @@ void cpu_finish_handler(FileParam sys, priority_queue<Event>& events, Event next
 			next_event.type = DISK2_ARRV;
 		}
 		else{
+			// If disk sizes are equal, then picks one at pseudo-randomness 50/50.
 			prob = rand_prob();
 			if(prob < 0.5){
 				next_event.type = DISK1_ARRV;
@@ -275,7 +268,7 @@ void cpu_finish_handler(FileParam sys, priority_queue<Event>& events, Event next
 		}
 	}
 
-	// If type was changed to DISK.
+	// If type was changed to DISK1 or DISK2, push event onto queue if not component is not busy.
 	if(next_event.type == DISK1_ARRV){
 		if(!DISK1_BUSY && DISK1.empty()){
 			events.push(next_event);
@@ -291,6 +284,7 @@ void cpu_finish_handler(FileParam sys, priority_queue<Event>& events, Event next
 		}
 	}
 
+	// If CPU queue is not empty, pop the next event, and set time to current and push to queue.
 	if(!CPU.empty()){
 		next_cpu_event = CPU.front();
 		next_cpu_event.time = sys_time;
@@ -436,8 +430,6 @@ void calculate_statistics(FileParam& sys, int previous_time, int current_time){
 
 	// The amount of time passed from the last event to the current.	
 	int time_passed = current_time - previous_time;
-
-	sys.TOTAL += time_passed;
 
 	// Calculate max queue sizes;
 	if(sys.CPU_MAX_SIZE < CPU.size()){

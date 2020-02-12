@@ -3,6 +3,7 @@
 
 struct FileParam{
 	
+	// Constants
 	int SEED;
 	int INIT_TIME;
 	int FIN_TIME;
@@ -19,6 +20,7 @@ struct FileParam{
 	int NETWORK_MIN;
 	int NETWORK_MAX;
 
+	// Statistic values
 	double CPU_QUEUE_SUM;
 	double DISK1_QUEUE_SUM;
 	double DISK2_QUEUE_SUM;
@@ -54,10 +56,9 @@ struct FileParam{
 	int DISK2_JOBS_COMPLETE;
 	int NETWORK_JOBS_COMPLETE;
 
-	int TOTAL;
-
+	// Constructor for FileParam.
 	FileParam();
-
+	// Reads file for constants.
 	void read_file(char* name);
 };
 

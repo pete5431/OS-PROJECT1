@@ -4,6 +4,7 @@
 #include "FileParam.h"
 using namespace std;
 
+// Constructor for FileParam, initializes the statistics values to zero.
 FileParam::FileParam(){
 
 	CPU_QUEUE_SUM = 0.0;
@@ -40,10 +41,9 @@ FileParam::FileParam(){
         DISK1_JOBS_COMPLETE = 0;
         DISK2_JOBS_COMPLETE = 0;
         NETWORK_JOBS_COMPLETE = 0;
-
-	TOTAL = 0;
 }
 
+// Reads from file the constants for FileParam.
 void FileParam::read_file(char* name){
 
 	FILE* fp;
@@ -111,6 +111,7 @@ void FileParam::read_file(char* name){
 	fclose(fp);
 }
 
+// Write to statistics.txt the statistics data.
 void write_statistic_file(FileParam sys){
 	
 	FILE* fp = fopen("statistics.txt", "w");
@@ -120,12 +121,34 @@ void write_statistic_file(FileParam sys){
 		exit(1);
 	} 
 
-	fprintf(fp, "CPU busy time: %f\n", sys.CPU_BUSY_TOTAL);
+	fprintf(fp, "CPU busy time: %f / CPU Utilization Percentage: %f\n", sys.CPU_BUSY_TOTAL, (sys.CPU_BUSY_TOTAL / (sys.FIN_TIME - sys.INIT_TIME)));
 	fprintf(fp, "Max CPU Queue Size: %d\n", sys.CPU_MAX_SIZE);
 	fprintf(fp, "Average CPU Queue Size: %f\n", (sys.CPU_QUEUE_SUM / sys.FIN_TIME));	
 	fprintf(fp, "Max CPU Response time: %d\n", sys.CPU_MAX_RESPONSE);
 	fprintf(fp, "Average CPU Response time: %f\n", (sys.CPU_RESPONSE_SUM / sys.CPU_ARRV_COUNT));
-	fprintf(fp, "Number of jobs CPU completed: %d\n", sys.CPU_JOBS_COMPLETE);
+	fprintf(fp, "Number of jobs CPU completed: %d / Throughput(Per one unit of time): %f\n\n", sys.CPU_JOBS_COMPLETE, ((double)sys.CPU_JOBS_COMPLETE / (sys.FIN_TIME - sys.INIT_TIME)));
+
+	fprintf(fp, "DISK1 busy time: %f / DISK1 Utilization Percentage: %f\n", sys.DISK1_BUSY_TOTAL, (sys.DISK1_BUSY_TOTAL / (sys.FIN_TIME - sys.INIT_TIME)));
+        fprintf(fp, "Max DISK1 Queue Size: %d\n", sys.DISK1_MAX_SIZE);
+        fprintf(fp, "Average DISK1 Queue Size: %f\n", (sys.DISK1_QUEUE_SUM / sys.FIN_TIME));
+        fprintf(fp, "Max DISK1 Response time: %d\n", sys.DISK1_MAX_RESPONSE);
+        fprintf(fp, "Average DISK1 Response time: %f\n", (sys.DISK1_RESPONSE_SUM / sys.DISK1_ARRV_COUNT));
+	fprintf(fp, "Number of jobs DISK1 completed: %d / Throughput(Per one unit of time): %f\n\n", sys.DISK1_JOBS_COMPLETE, ((double)sys.DISK1_JOBS_COMPLETE / (sys.FIN_TIME - sys.INIT_TIME)));
+
+	fprintf(fp, "DISK2 busy time: %f / DISK2 Utilization Percentage: %f\n", sys.DISK2_BUSY_TOTAL, (sys.DISK2_BUSY_TOTAL / (sys.FIN_TIME - sys.INIT_TIME)));
+        fprintf(fp, "Max DISK2 Queue Size: %d\n", sys.DISK2_MAX_SIZE);
+        fprintf(fp, "Average DISK2 Queue Size: %f\n", (sys.DISK2_QUEUE_SUM / sys.FIN_TIME));
+        fprintf(fp, "Max DISK2 Response time: %d\n", sys.DISK2_MAX_RESPONSE);
+        fprintf(fp, "Average DISK2 Response time: %f\n", (sys.DISK2_RESPONSE_SUM / sys.DISK2_ARRV_COUNT));
+        fprintf(fp, "Number of jobs DISK2 completed: %d / Throughput(Per one unit of time): %f\n\n", sys.DISK2_JOBS_COMPLETE, ((double)sys.DISK2_JOBS_COMPLETE / (sys.FIN_TIME - sys.INIT_TIME)));
+
+	fprintf(fp, "NETWORK busy time: %f / NETWORK Utilization Percentage: %f\n", sys.NETWORK_BUSY_TOTAL, (sys.NETWORK_BUSY_TOTAL / (sys.FIN_TIME - sys.INIT_TIME)));
+        fprintf(fp, "Max NETWORK Queue Size: %d\n", sys.NETWORK_MAX_SIZE);
+        fprintf(fp, "Average NETWORK Queue Size: %f\n", (sys.NETWORK_QUEUE_SUM / sys.FIN_TIME));
+        fprintf(fp, "Max NETWORK Response time: %d\n", sys.NETWORK_MAX_RESPONSE);
+        fprintf(fp, "Average NETWORK Response time: %f\n", (sys.NETWORK_RESPONSE_SUM / sys.NETWORK_ARRV_COUNT));
+        fprintf(fp, "Number of jobs NETWORK completed: %d / Throughput(Per one unit of time): %f\n\n", sys.NETWORK_JOBS_COMPLETE, ((double)sys.NETWORK_JOBS_COMPLETE / (sys.FIN_TIME - sys.INIT_TIME)));
+
 	fclose(fp);
 }	
 
