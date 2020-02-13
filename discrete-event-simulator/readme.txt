@@ -102,7 +102,9 @@ srand(), and event simulation_finish and the first job are added to the priority
 
 There will be one main while loop that pops events off the p_queue, and then handles or calls the appropriate handler function
 
-based off the event type. It will also calculate the statistics for like queue size for each component through each occurence.
+based off the event type. This is done using a switch statement. Also at each event pop, the current system time is set equal to
+
+the event time, because this way it avoids going over each incremenet of time where nothing happens.
 
 job_arrival_handler - Sets the event to CPU_ARRV and push to p_queue if CPU isn't busy otherwise push to CPU queue to wait.
 		      Also determines next arrival time, and add to p_queue.
